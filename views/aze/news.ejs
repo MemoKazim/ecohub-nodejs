@@ -1,0 +1,39 @@
+<%-include("partials/header" , {title: title});-%>
+<body>
+  <%-include("partials/navbar", {projects: projects});-%>
+  <%-include("partials/navigation" , {title: title, title_nav:title_nav });-%>
+
+  <section id="sub-news">
+    <div class="section-news-container">
+      <%news.forEach(new_elem =>{ %>
+      <div class="news-item">
+        <div class="news-item-container">
+          <div
+            class="news-item-img"
+            style="background-image: url('/img/<%=new_elem.new_cover%>')"
+          ></div>
+          <div class="news-item-content">
+            <div class="news-title">
+              <a href="/aze/news/<%=new_elem.new_id%>">
+                <%-new_elem.new_title_az-%>
+              </a>
+            </div>
+            <div class="news-date">
+              <i class="fa-solid fa-calendar-days"></i>
+              <p><%-new_elem.news_date-%></p>
+            </div>
+            <div class="news-read-more">
+              <button>
+                <a href="/aze/news/<%=new_elem.new_id%>">ƏTRALI OXU</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%})%>
+    </div>
+  </section>
+
+  <%-include("partials/footer",{script: script, news:footer_news,
+  contact:contact, projects: projects, footer:logo});-%>
+</body>

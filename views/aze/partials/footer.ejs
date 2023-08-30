@@ -1,0 +1,98 @@
+<footer id="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <a href="/">
+          <div class="footer-bottom-logo"></div>
+        </a>
+      </div>
+      <div class="footer-top">
+        <div class="col-1">
+          <div class="footer-1st">
+            <div class="content">
+              <h3>Haqqımızda</h3>
+              <p class="footer-par" style="margin-top: 1rem;">
+                ECOHUB qeyri-kommersiya platforması plastik tullantılarının
+                ətraf mühitə mənfi təsirinin azaldılmasına töhvə vermək
+                məqsədi ilə fəaliyyət göstərir.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <h3>Layihələrimiz</h3>
+          <div class="footer-par">
+            <ul class="footer-par-ul">
+              <%for (var i = projects.length-1; i>=projects.length-4; i--){%>
+                <li class="footer-par-ul-li">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <a href="/aze/projects#<%=projects[i].project_id%>"
+                    ><%-projects[i].project_title_az-%></a
+                  >
+                </li>
+                <%}%>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <h3>Xəbərlər</h3>
+          <div class="footer-par">
+            <ul class="footer-par-ul">
+              <li class="footer-par-ul-li col-news">
+                <a href="/aze/news/<%=news[0].new_id%>">
+                  <%-news[0].new_title_az-%>
+                </a>
+                <p>Paylaşılıb: <%-news[0].news_date-%></p>
+              </li>
+              <li class="footer-par-ul-li col-news">
+                <a href="/aze/news/<%=news[1].new_id%>">
+                  <%-news[1].new_title_az-%>
+                </a>
+                <p>Paylaşılıb: <%-news[1].news_date-%></p>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <h3>Bizimlə Əlaqə</h3>
+          <div class="footer-par">
+            <ul class="footer-par-ul">
+              <li class="footer-par-ul-li">
+                <p>EKOHUB LLC</p>
+              </li>
+              <li class="">
+                <p>Ünvan: <%-contact[0].contact_address-%></p>
+              </li>
+              <li>
+                <p>Əlaqə: <%-contact[0].contact_number-%></p>
+              </li>
+              <li>
+                <p>Email: <%-contact[0].contact_email-%></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="footer-bottom" style="display: flex; justify-content: center;align-items: center; flex-direction: column; margin: 3rem 0;">
+        
+        <div class="icons">
+          <%footer.forEach(logo => {  %>
+            <div class="footer-logos">
+              <a href="<%=logo.logo_url%>" target="_blank">
+                <img src="/img/<%=logo.logo_image%>" alt="<%=logo.logo_name%>">
+              </a>
+            </div>
+          <%});%>
+          
+        </div>
+        <p style="margin-top: 1rem;">© Bütün hüquqlar qorunur. EKOHUB LLC <%-new Date().getFullYear()-%></p>
+      </div>
+    </div>
+  </footer>
+  <script src="/js/<%=script%>"></script>
+</body>
+</html>

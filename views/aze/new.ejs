@@ -1,0 +1,33 @@
+<%-include("partials/header" , {title: title});-%>
+<body>
+  <%-include("partials/navbar", {projects: projects});-%>
+  <%-include("partials/navigation" , {title: title, title_nav:title_nav});-%>
+
+  <section id="news-extended">
+    <h1 class="news-header-sep"><%-news[0].new_title_az-%></h1>
+    <p class="news-date">Paylaşılıb: <%-news[0].news_date-%></p>
+
+    <p class="news-content"><%-news[0].new_content_az-%></p>
+
+    <div class="slideshow-container-news">
+      <%if (JSON.parse(news[0].new_images)[0].split('.').slice(-1) == 'mp4'){%>
+      <video class="news-video-content" controls="">
+        <source
+          src="/img/<%=JSON.parse(news[0].new_images)[0]%>"
+          type="video/mp4"
+        />
+      </video>
+      <%}else{%>
+      <a class="prev-1" onclick="plusSlides(-1)">&#10094;</a>
+      <%JSON.parse(news[0].new_images).forEach(elem => { %>
+      <div class="mySlides">
+        <img src="/img/<%=elem%>" alt="slider-image" />
+      </div>
+      <%})%>
+      <a class="next-1" onclick="plusSlides(1)">&#10095;</a>
+      <%}%>
+    </div>
+  </section>
+  <%-include("partials/footer",{script: script, news:footer_news,
+  contact:contact, projects: projects, footer:logo});-%>
+</body>

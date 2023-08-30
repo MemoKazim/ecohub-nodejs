@@ -1,0 +1,161 @@
+<%-include("partials/header" ,{title: title});-%>
+  <body>
+    <%-include("partials/navbar", {projects: projects});-%>
+
+    <section id="slide-show">
+      <div class="slideshow-container">
+        <div class="slider-container">
+          <%slider.forEach( slide => {
+            if (slide.slide_main){%>
+              <div class="mySlides fade" style="background-image: url('/img/<%=slide.slide_image%>');">
+                <h2 class="slider-img-text"><%-slide.slide_text_en-%></h2>
+                <h2 class="slider-img-text-bottom"><%-slide.slide_paragraph_en-%></h2>
+              </div>
+              <%}else{%>
+                <div class="mySlides fade"  style="background-image:
+                linear-gradient(
+                  to bottom,
+                  rgba(0, 0, 0, 0.3),
+                  rgba(0, 0, 0, 0.7)
+                ), url('/img/<%=slide.slide_image%>');">
+                  <h2 class="slider-img-text"><%-slide.slide_text_en-%></h2>
+                  <h2 class="slider-img-text-bottom"><%-slide.slide_paragraph_en-%></h2>
+                  <a href="/eng/news" class="header-more header-more-text">More</a>
+                </div>
+          <%}})%>
+        </div>
+        <div class="slider-controller-left">
+          <a class="prev-1" onclick="plusSlides(-1)">
+            <i class="fa-solid fa-angle-left"></i>
+          </a>
+        </div>
+        <div class="slider-controller-right">
+          <a class="next-1" onclick="plusSlides(1)">
+            <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about-us">
+      <video
+        onclick="Fullscreen()"
+        class="about-vid"
+        controls
+        poster="/img/ecosample.png"
+      >
+        <source src="/img/home.mp4" type="video/mp4" />
+      </video>
+      <div class="about-us-text">
+        <a href="/eng/about">
+          <h2>About us</h2>
+        </a>
+        <h3>ECOHUB</h3>
+        <p>
+          EcoHub is a non-commercial platform that aims to recycle packaging waste for the first time in engrbaijan by implementing pilot projects within the framework of Extended Producer Responsibility. With the motto "Better Environment, Better Future", we offer solutions that stimulate the involvement of packaging waste in the circular economy to achieve environmental sustainability, acting as a bridge connecting all stakeholders for this action. 
+        </p>
+      </div>
+    </section>
+
+    <section id="plastic-1">
+      <div class="sub-title">
+        <h3>Recycling of plastic waste</h3>
+      </div>
+      <div class="sub-content">
+        <p>
+          Today, plastic materials have become a part of our daily life, they are used almost everywhere. Some items made of plastic are made for long-term use. A very large part of it is designed and manufactured for short-term use. (Such as shopping bags, bottles, packaging products, etc.). Plastic can remain intact in nature for centuries. Today, plastic waste is all around us and even in the most remote corners of the world. Plastic waste seriously damages the nature and our health. It even pollutes the seas and causes great damage to marine life. There are about 142 million tons of waste in the seas and oceans, which is 20 kg of waste per person. While 10 million tons are added to this figure every year.
+        </p>
+      </div>
+    </section>
+
+    <section id="plastic-2">
+      <div class="sub-title">
+        <h3>Recycling plastic</h3>
+      </div>
+      <div class="sub-content">
+        <p>
+          Recycling any material possible is an important factor for the environment, but the recycling of plastics is of particular importance, due to their slow degradation in nature. While plastics can take hundreds of years to biodegrade, they remain intact in nature for 1,000 years. This waste does not rot or spoil when thrown in the trash. In nature, it shows its effect for many years. It causes water and soil pollution. Also, the raw materials of plastics are oil, gas and coal. 4-5% of world oil reserves are used in plastic production. Recycling plastic can save natural resources and energy. 
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container-fluid">
+        <div class="slider-wrap">
+          <div class="projects-header">
+            <a href="/eng/projects">
+              <h2>Our Projects</h2>
+            </a>
+          </div>
+          <div class="slider-main" id="slider-main">
+            <%index.forEach((project)=>{%>
+            <div class="item">
+              <div class="img-container">
+                <img src="/img/<%=project.project_image_name%>" alt="projects-image">
+                <p class="slider-text"><%-project.project_title_en-%></p>
+                <a href="/eng/projects" class="slider-text">
+                  More
+                </a>
+              </div>
+            </div>
+            <%});%>
+          </div>
+          <div class="slider-btn">
+            <a class="prev-2 controller" onclick="prev()">
+              <i class="fa-solid fa-angle-left"></i>
+            </a>
+            <a class="next-2 controller" onclick="next()">
+              <i class="fa-solid fa-angle-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="news-container">
+        <div class="news-header">
+          <div class="header">
+            <a href="/eng/news">
+              <h2>News</h2>
+            </a>
+          </div>
+          <div class="header-more">
+            <a class="header-more-text" href="/eng/news"> More </a>
+          </div>
+        </div>
+        <div class="news-main">
+          <div class="main-topic"style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)),url(/img/<%=footer_news[0].new_cover%>);">
+            <div class="date">
+              <div class="date-logo">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <p><%-footer_news[0].news_date-%></p>
+            </div>
+            <a href="/eng/news/<%=footer_news[0].new_id%>" class="main-par">
+              <%-footer_news[0].new_title_en-%>
+            </a>
+          </div>
+          <div class="sub-topic">
+            <%footer_news.slice(1,3).forEach((new_)=>{%>
+            <div class="sub">
+              <div class="date">
+                <div class="date-logo">
+                  <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <p><%-new_.news_date-%></p>
+              </div>
+              <a href="/eng/news/<%=new_.new_id%>" class="sub-par">
+                <%-new_.new_title_en-%>
+              </a>
+              <a href="/eng/news/<%=new_.new_id%>" class="sub-more"> Read more </a>
+            </div>
+            <%});%>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%-include("partials/footer",{script: script, news:footer_news, contact:contact, projects: projects, footer:logo});-%>
+  </body>
+</html>

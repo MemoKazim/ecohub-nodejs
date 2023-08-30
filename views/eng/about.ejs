@@ -1,0 +1,138 @@
+<%-include("partials/header" , {title: title});-%>
+<body>
+  <%-include("partials/navbar", {projects: projects});-%> <%-include("partials/navigation" , {title:
+  title, title_nav:title_nav });-%>
+
+  <section id="sub-about-us">
+    <div class="sub-about-us-container">
+      <div class="sub-about-us-content">
+        <section id="who-are-we">
+          <div class="sub-about-us-1">
+            <div class="sub-title">
+              <h3>Who are we?</h3>
+            </div>
+            <div class="sub-content">
+              <p>
+                EcoHub is a non-commercial platform that aims to recycle packaging waste for the first time in Azerbaijan by implementing pilot projects within the framework of Extended Producer Responsibility. With the motto "Better Environment, Better Future", we offer solutions that stimulate the involvement of packaging waste in the circular economy to achieve environmental sustainability, acting as a bridge connecting all stakeholders for this action. 
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="our-purpose">
+          <div class="sub-about-us-2-1">
+            <div class="sub-title">
+              <h3>Our mission</h3>
+            </div>
+            <div class="sub-content">
+              <p>
+                Our mission is to help reduce the negative impact of plastic waste on the environment, support recycling and promote a zero-waste philosophy and involve more people in these activities. 
+              </p>
+              <ul>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  To support all environmental activities aimed at improving the state of the environment 
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Improving the environmental situation in our country by involving plastic waste recycling 
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Improving the plastic waste management system 
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  To promote environmental education in people 
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="our-team">
+          <div class="sub-title">
+            <h3>Our team</h3>
+          </div>
+          <div class="sub-content">
+            <div class="our-team-container">
+              <%employees.forEach((employee)=>{%>
+              <div class="col-1-of-2">
+                <div class="card">
+                  <div class="card__side card__side--front">
+                    <% if(employee.employee_image === null){%>
+                      <div
+                      class="card__picture"
+                      style="
+                        background-image: url(/img/nopic.jpg);
+                        background-position: bottom;
+                      "
+                    >
+                    <%} else {%>
+                    <div
+                      class="card__picture"
+                      style="
+                        background-image: url(/img/<%=employee.employee_image%>);
+                      "
+                    >
+                    <%}%>
+                      &nbsp;
+                    </div>
+                    <div class="card__side__details">
+                      <ul>
+                        <li><%-employee.employee_name-%></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="card__side card__side--back">
+                    <div class="card__cta">
+                      <div class="card__price-box">
+                        <div class="card__back__details">
+                          <ul>
+                            <li class="back-color">
+                              <%-employee.employee_job_en-%>
+                            </li>
+                            <li class="back-color">
+                              <%-employee.employee_email-%>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <%});%>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="side-navbar">
+        <p>About</p>
+        <ul>
+          <li><a href="#who-are-we"> Who are we? </a></li>
+          <li><a href="#our-purpose"> Our mission </a></li>
+          <li><a href="#our-team"> Our team </a></li>
+          <li><a href="#partnership"> Partners </a></li>
+        </ul>
+      </div>
+    </div>
+    <section id="partnership">
+      <div class="sub-title">
+        <h3>Partners</h3>
+      </div>
+      <div class="container">
+        <section class="customer-logos slider">
+          <%partners.forEach((partner)=>{%>
+          <div
+            class="slide"
+            style="background-image: url(/img/<%=partner.partner_logo%>)"
+          ></div>
+          <%});%>
+        </section>
+      </div>
+    </section>
+  </section>
+
+  <%-include("partials/footer",{script: script, news:footer_news, contact:contact, projects: projects, footer:logo});-%>
+</body>

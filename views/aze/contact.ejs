@@ -1,0 +1,34 @@
+<%-include("partials/header" , {title: title});-%>
+<body>
+  <%-include("partials/navbar", {projects: projects});-%>
+  <%-include("partials/navigation" , {title: title, title_nav:title_nav });-%>
+
+  <section id="map">
+    <address class="adress">
+      <div class="info-col">
+        <h3>Ünvan:</h3>
+        <p><%-contact[0].contact_address-%></p>
+      </div>
+      <div class="info-col">
+        <h3>Əlaqə:</h3>
+        <p><%-contact[0].contact_number-%></p>
+      </div>
+      <div class="info-col">
+        <h3>Email:</h3>
+        <p><%-contact[0].contact_email-%></p>
+      </div>
+    </address>
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4371.8524031172865!2d49.77777576829069!3d40.532436463433974!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40308e1efca2f055%3A0x2988cc26b7bb1683!2zTm92eGFuxLEgS8mZbmQgQVRT!5e0!3m2!1saz!2s!4v1658224901585!5m2!1saz!2s"
+        class="map-container"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </section>
+
+  <%-include("partials/footer",{script: script, news:footer_news,
+  contact:contact, projects: projects, footer:logo});-%>
+</body>

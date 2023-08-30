@@ -1,0 +1,53 @@
+<nav class="navbar nav-container">
+  <a href="/" class="logo"
+    ><img src="/img/green veritical.png" alt="Logo-img" class="nav-logo"
+  /></a>
+  <input type="checkbox" id="toggler" />
+  <label for="toggler"><i class="fa-solid fa-bars"></i></label>
+  <div class="menu">
+    <ul class="list">
+      <li><a href="/eng/"> HOME </a></li>
+      <li>
+        <a href="/eng/about"> ABOUT </a>
+        <ul class="sub-nav-header">
+          <li>
+            <a href="/eng/about#who-are-we"> WHO ARE WE? </a>
+          </li>
+          <li>
+            <a href="/eng/about#our-purpose"> OUR DUTY </a>
+          </li>
+          <li>
+            <a href="/eng/about#our-team"> OUR TEAM </a>
+          </li>
+          <li>
+            <a href="/eng/about#partnership"> PARTNERS </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="/eng/projects"> PROJECTS </a>
+        <ul class="sub-nav-header">
+          <%for (var i = projects.length-1; i>=projects.length-5; i--){%>
+          <li>
+            <a href="/eng/projects#<%=projects[i].project_id%>"
+              ><%-projects[i].project_title_en-%></a
+            >
+          </li>
+          <%}%>
+        </ul>
+      </li>
+      <li><a href="/eng/news"> NEWS </a></li>
+      <li><a href="/eng/galery"> GALERY </a></li>
+      <li><a class="middle" href="/eng/ecoart"> ECOART </a></li>
+      <li><a class="middle" href="/eng/contact"> CONTACT </a></li>
+      <li>
+        <a class="small" href="/eng/">EN</a>
+        <ul class="small sub-nav-header">
+          <li>
+            <a class="small" href="/aze/index">AZ</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

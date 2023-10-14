@@ -27,7 +27,7 @@ app.use(
 app.set("view engine", "ejs");
 app.use("/eng", eng);
 app.use("/aze", aze);
-// app.use("/admin", admin);                                ######################AND THIS
+// app.use("/admin", admin);    ######################AND THIS
 // app.use(
 //   session({
 //     secret: process.env.SESSION_SECRET,

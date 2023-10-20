@@ -125,7 +125,8 @@ router
 
 //=============================|AUTHENTICATION|================================//
 //==================================|AREA|=====================================//
-
-router.get("/", authController.getLogin);
+router.get("/signup", authController.getSignup);
+router.post("/signup", authController.postSignup);
 router.post("/login", authController.postLogin);
+router.get("/", authController.getLogin);
 module.exports = router;

@@ -18,14 +18,24 @@ const userSchema = new mongoose.Schema({
     lowecase: true,
     validate: [validator.isEmail, "Email is invalid"],
   },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-userSchema.pre("save", async (next) => {
+userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });
 
+userSchema.methods.correctPassword = async function correctPassword(
+  existPass,
+  incomingPass
+) {
+  return await bcrypt.compare(incomingPass, existPass);
+};
 const User = new mongoose.model("User", userSchema);
 
 module.exports = User;

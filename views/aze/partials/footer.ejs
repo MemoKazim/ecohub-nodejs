@@ -23,14 +23,14 @@
           <h3>Layihələrimiz</h3>
           <div class="footer-par">
             <ul class="footer-par-ul">
-              <%for (var i = projects.length-1; i>=projects.length-4; i--){%>
+              <%projects.forEach((data)=>{ %>
                 <li class="footer-par-ul-li">
                   <i class="fa-solid fa-circle-check"></i>
-                  <a href="/aze/projects#<%=projects[i].project_id%>"
-                    ><%-projects[i].project_title_az-%></a
+                  <a href="/aze/projects#<%=data._id%>"
+                    ><%-data.title.az-%></a
                   >
                 </li>
-                <%}%>
+              <%});%>
             </ul>
           </div>
         </div>
@@ -39,39 +39,30 @@
           <h3>Xəbərlər</h3>
           <div class="footer-par">
             <ul class="footer-par-ul">
-              <li class="footer-par-ul-li col-news">
-                <a href="/aze/news/<%=news[0].new_id%>">
-                  <%-news[0].new_title_az-%>
-                </a>
-                <p>Paylaşılıb: <%-news[0].news_date-%></p>
-              </li>
-              <li class="footer-par-ul-li col-news">
-                <a href="/aze/news/<%=news[1].new_id%>">
-                  <%-news[1].new_title_az-%>
-                </a>
-                <p>Paylaşılıb: <%-news[1].news_date-%></p>
-              </li>
-
+              <%news.forEach((data)=>{ %>
+                <li class="footer-par-ul-li col-news">
+                  <a href="/aze/news/<%=data._id%>">
+                    <%-data.title.az-%>
+                  </a>
+                  <p>Paylaşılıb: <%-data.date-%></p>
+                </li>
+              <%});%>
             </ul>
           </div>
         </div>
 
         <div class="col-4">
-          <h3>Bizimlə Əlaqə</h3>
+          <h3>Əlaqə</h3>
           <div class="footer-par">
             <ul class="footer-par-ul">
               <li class="footer-par-ul-li">
                 <p>EKOHUB LLC</p>
               </li>
-              <li class="">
-                <p>Ünvan: <%-contact[0].contact_address-%></p>
-              </li>
+              <%contact.forEach((data)=>{%>
               <li>
-                <p>Əlaqə: <%-contact[0].contact_number-%></p>
+                <p> <%-data.title.az-%>: <%-data.content.az-%></p>
               </li>
-              <li>
-                <p>Email: <%-contact[0].contact_email-%></p>
-              </li>
+              <%});%>
             </ul>
           </div>
         </div>
@@ -80,10 +71,10 @@
       <div class="footer-bottom" style="display: flex; justify-content: center;align-items: center; flex-direction: column; margin: 3rem 0;">
         
         <div class="icons">
-          <%footer.forEach(logo => {  %>
+          <%footer.forEach((logo) => {  %>
             <div class="footer-logos">
-              <a href="<%=logo.logo_url%>" target="_blank">
-                <img src="/img/<%=logo.logo_image%>" alt="<%=logo.logo_name%>">
+              <a href="<%=logo.url%>" target="_blank">
+                <img src="/uploads/<%=logo.image%>" alt="<%=logo.name%>">
               </a>
             </div>
           <%});%>

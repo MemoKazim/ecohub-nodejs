@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "653236ea04491c62249f69f9"
+  },
+  "title": {
+    "az": "title AZ",
+    "en": "title EN"
+  },
+  "description": {
+    "az": "desc AZ",
+    "en": "desc EN"
+  },
+  "imageCover": "salam.png",
+  "images": [
+    "1",
+    "2",
+    "3"
+  ]
+}]

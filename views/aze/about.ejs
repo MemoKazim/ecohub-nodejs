@@ -1,152 +1,107 @@
 <%-include("partials/header" , {title: title});-%>
 <body>
-  <%-include("partials/navbar", {projects: projects});-%> <%-include("partials/navigation" , {title:
-  title, title_nav:title_nav });-%>
+  <%-include("partials/navbar", {projects: projects, about:about});-%>
+  <%-include("partials/navigation" , {title: title, title_nav:title_nav });-%>
 
   <section id="sub-about-us">
     <div class="sub-about-us-container">
       <div class="sub-about-us-content">
-        <section id="who-are-we">
-          <div class="sub-about-us-1">
-            <div class="sub-title">
-              <h3>Biz kimik?</h3>
-            </div>
-            <div class="sub-content">
-              <p>
-                EcoHub Azərbaycanda ilk dəfə qablaşdırma tullantılarının
-                İstehsalçıların Genişləndirilmiş Məsuliyyəti çərçivəsində pilot
-                layihələr həyata keçirərək təkrara emala yönəldən
-                qeyri-kommersiya platformasıdır. <br />
-                Biz "Daha yaxşı ətraf mühit, Daha yaxşı gələcək" devizi ilə
-                ekoloji dayanıqlılılğa nail olmaq üçün qablaşdırma
-                tullantırlarının dövri iqtisadiyyata cəlbini stimullaşdıran
-                həllər təklif edərək, bütün maraqlı tərəfləri bu amal uğrunda
-                birləşdirən bir körpü rolunu oynayırıq.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="our-purpose">
+        <%about.forEach((data)=>{ %>
+        <section id="<%=data._id%>">
           <div class="sub-about-us-2-1">
             <div class="sub-title">
-              <h3>Missiyamız & Vəzifəmiz</h3>
+              <h3><%-data.title.az-%></h3>
             </div>
-            <div class="sub-content">
-              <p>
-                Bizim misiyamız plastik tullantılarının ətraf mühitə mənfi
-                təsirinin azalmasına kömək etmək, təkrar emala dəstək göstərmək
-                və sıfır tullantı fəlsəfəsi təbliğ edib daha çox insanı bu
-                fəaliyyətlərə cəlb etməkdir.
-              </p>
-              <ul>
-                <li>
-                  <i class="fa-solid fa-check"></i>
-                  Ətraf mühitin vəziyyətinin yaxşılaşdırılmasına yönəldilmiş
-                  bütün ekoloji fəaliyyətləri dəstəkləmək
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i>
-                  Plastik tullantıları təkrar emala cəlb etməklə ölkəmizdə
-                  ekoloji vəziyyətinin yaxşılaşdırılması
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i>
-                  Plastik tullantıların idarə edilməsi sisteminin
-                  təkminləşdirlməsi.
-                </li>
-                <li>
-                  <i class="fa-solid fa-check"></i>
-                  İnsanlarda ekoloji tərbiyənin təbliğ etmək
-                </li>
-              </ul>
-            </div>
+            <div class="sub-content"><%-data.description.az-%></div>
           </div>
         </section>
-
-        <section id="our-team">
-          <div class="sub-title">
-            <h3>Komandamız</h3>
-          </div>
-          <div class="sub-content">
-            <div class="our-team-container">
-              <%employees.forEach((employee)=>{%>
-              <div class="col-1-of-2">
-                <div class="card">
-                  <div class="card__side card__side--front">
-                    <% if(employee.employee_image === null){%>
-                      <div
-                      class="card__picture"
-                      style="
-                        background-image: url(/img/nopic.jpg);
-                        background-position: bottom;
-                      "
-                    >
-                    <%} else {%>
-                    <div
-                      class="card__picture"
-                      style="
-                        background-image: url(/img/<%=employee.employee_image%>);
-                      "
-                    >
-                    <%}%>
-                      &nbsp;
-                    </div>
-                    <div class="card__side__details">
-                      <ul>
-                        <li><%-employee.employee_name-%></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="card__side card__side--back">
-                    <div class="card__cta">
-                      <div class="card__price-box">
-                        <div class="card__back__details">
-                          <ul>
-                            <li class="back-color">
-                              <%-employee.employee_job_az-%>
-                            </li>
-                            <li class="back-color">
-                              <%-employee.employee_email-%>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <%});%>
-            </div>
-          </div>
-        </section>
+        <%});%>
       </div>
       <div class="side-navbar">
         <p>Haqqımızda</p>
         <ul>
-          <li><a href="#who-are-we"> Biz kimik? </a></li>
-          <li><a href="#our-purpose"> Məqsədimiz </a></li>
+          <%about.forEach((data)=>{%>
+          <li><a href="<%=data._id%>"><%-data.title.az-%></a></li>
+          <%});%>
           <li><a href="#our-team"> Komandamız </a></li>
           <li><a href="#partnership"> Tərəfdaşlar </a></li>
         </ul>
       </div>
     </div>
-    <section id="partnership">
-      <div class="sub-title">
-        <h3>Tərəfdaşlar</h3>
-      </div>
-      <div class="container">
-        <section class="customer-logos slider">
-          <%partners.forEach((partner)=>{%>
-          <div
-            class="slide"
-            style="background-image: url(/img/<%=partner.partner_logo%>)"
-          ></div>
-          <%});%>
-        </section>
-      </div>
-    </section>
-  </section>
 
-  <%-include("partials/footer",{script: script, news:footer_news, contact:contact, projects: projects, footer:logo});-%>
-</body>
+  <section id="our-team">
+    <div class="sub-title">
+      <h3>Komandamız</h3>
+    </div>
+    <div class="sub-content">
+      <div class="our-team-container">
+        <% employees.forEach((employee)=>{ %>
+        <div class="col-1-of-2">
+          <div class="card">
+            <div class="card__side card__side--front">
+              <% if(employee.imageCover === null){ %>
+                <div
+                class="card__picture"
+                style="
+                  background-image: url(/images/nopic.jpg);
+                  background-position: bottom;
+                "
+              >
+              <% } else { %>
+              <div
+                class="card__picture"
+                style="
+                  background-image: url(/uploads/<%=employee.imageCover%>);
+                "
+              >
+              <% } %>
+                &nbsp;
+              </div>
+              <div class="card__side__details">
+                <ul>
+                  <li><%-employee.name.az-%> <%-employee.surname.az-%></li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <div class="card__back__details">
+                    <ul>
+                      <li class="back-color">
+                        <%-employee.job.az-%>
+                      </li>
+                      <li class="back-color">
+                        <%-employee.mail-%>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%});%>
+      </div>
+    </div>
+  </section>
+  <section id="partnership">
+    <div class="sub-title">
+      <h3>Tərəfdaşlar</h3>
+    </div>
+    <div class="container">
+      <section class="customer-logos slider">
+        <%partners.forEach((partner)=>{%>
+        <div
+          class="slide"
+          style="background-image: url(/uploads/<%=partner.image%>)"
+        ></div>
+        <%});%>
+      </section>
+    </div>
+  </section>
+  </section>
+  <%-include("partials/footer",{script: script, news:footer_news,
+    contact:contact, projects: projects, footer:logo});-%>
+  </body>
+  

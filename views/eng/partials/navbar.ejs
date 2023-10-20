@@ -1,21 +1,20 @@
 <nav class="navbar nav-container">
-  <a href="/" class="logo"
-    ><img src="/img/green veritical.png" alt="Logo-img" class="nav-logo"
+  <a href="/eng/index" class="logo"
+    ><img src="/images/g_veritical.png" alt="Logo-img" class="nav-logo"
   /></a>
   <input type="checkbox" id="toggler" />
   <label for="toggler"><i class="fa-solid fa-bars"></i></label>
   <div class="menu">
     <ul class="list">
-      <li><a href="/eng/"> HOME </a></li>
+      <li><a href="/eng/index"> HOME </a></li>
       <li>
         <a href="/eng/about"> ABOUT </a>
         <ul class="sub-nav-header">
+          <%about.forEach((data)=>{%>
           <li>
-            <a href="/eng/about#who-are-we"> WHO ARE WE? </a>
+            <a href="/eng/about#<%=data._id%>"><%-data.title.en-%></a>
           </li>
-          <li>
-            <a href="/eng/about#our-purpose"> OUR DUTY </a>
-          </li>
+          <%});%>
           <li>
             <a href="/eng/about#our-team"> OUR TEAM </a>
           </li>
@@ -27,13 +26,11 @@
       <li>
         <a href="/eng/projects"> PROJECTS </a>
         <ul class="sub-nav-header">
-          <%for (var i = projects.length-1; i>=projects.length-5; i--){%>
+          <%projects.forEach((data) =>{%>
           <li>
-            <a href="/eng/projects#<%=projects[i].project_id%>"
-              ><%-projects[i].project_title_en-%></a
-            >
+            <a href="/eng/projects#<%=data._id%>"><%-data.title.en-%></a>
           </li>
-          <%}%>
+          <%})%>
         </ul>
       </li>
       <li><a href="/eng/news"> NEWS </a></li>
@@ -41,10 +38,10 @@
       <li><a class="middle" href="/eng/ecoart"> ECOART </a></li>
       <li><a class="middle" href="/eng/contact"> CONTACT </a></li>
       <li>
-        <a class="small" href="/eng/">EN</a>
+        <a class="small" href="/">EN</a>
         <ul class="small sub-nav-header">
           <li>
-            <a class="small" href="/aze/index">AZ</a>
+            <a class="small" href="/eng/index">AZ</a>
           </li>
         </ul>
       </li>

@@ -1,7 +1,7 @@
 <footer id="footer">
     <div class="footer-container">
       <div class="footer-logo">
-        <a href="/">
+        <a href="/eng/index">
           <div class="footer-bottom-logo"></div>
         </a>
       </div>
@@ -9,7 +9,7 @@
         <div class="col-1">
           <div class="footer-1st">
             <div class="content">
-              <h3>About Us</h3>
+              <h3>About</h3>
               <p class="footer-par" style="margin-top: 1rem;">
                 ECOHUB is a non-profit platform that aims to contribute to reducing the negative impact of plastic waste on the environment. 
               </p>
@@ -18,17 +18,17 @@
         </div>
 
         <div class="col-2">
-          <h3>Our Projecs</h3>
+          <h3>Projects</h3>
           <div class="footer-par">
             <ul class="footer-par-ul">
-              <%for (var i = projects.length-1; i>=projects.length-4; i--){%>
+              <%projects.forEach((data)=>{ %>
                 <li class="footer-par-ul-li">
                   <i class="fa-solid fa-circle-check"></i>
-                  <a href="/eng/projects#<%=projects[i].project_id%>"
-                    ><%-projects[i].project_title_en-%></a
+                  <a href="/eng/projects#<%=data._id%>"
+                    ><%-data.title.en-%></a
                   >
                 </li>
-                <%}%>
+              <%});%>
             </ul>
           </div>
         </div>
@@ -37,19 +37,14 @@
           <h3>News</h3>
           <div class="footer-par">
             <ul class="footer-par-ul">
-              <li class="footer-par-ul-li col-news">
-                <a href="/eng/news/<%=news[0].new_id%>">
-                  <%-news[0].new_title_en-%>
-                </a>
-                <p>Published: <%-news[0].news_date-%></p>
-              </li>
-              <li class="footer-par-ul-li col-news">
-                <a href="/eng/news/<%=news[1].new_id%>">
-                  <%-news[1].new_title_en-%>
-                </a>
-                <p>Published: <%-news[1].news_date-%></p>
-              </li>
-
+              <%news.forEach((data)=>{ %>
+                <li class="footer-par-ul-li col-news">
+                  <a href="/eng/news/<%=data._id%>">
+                    <%-data.title.en-%>
+                  </a>
+                  <p>Published: <%-data.date-%></p>
+                </li>
+              <%});%>
             </ul>
           </div>
         </div>
@@ -61,15 +56,11 @@
               <li class="footer-par-ul-li">
                 <p>EKOHUB LLC</p>
               </li>
-              <li class="">
-                <p>Address: <%-contact[0].contact_address-%></p>
-              </li>
+              <%contact.forEach((data)=>{%>
               <li>
-                <p>Phone: <%-contact[0].contact_number-%></p>
+                <p> <%-data.title.en-%>: <%-data.content.en-%></p>
               </li>
-              <li>
-                <p>Email: <%-contact[0].contact_email-%></p>
-              </li>
+              <%});%>
             </ul>
           </div>
         </div>
@@ -78,10 +69,10 @@
       <div class="footer-bottom" style="display: flex; justify-content: center;align-items: center; flex-direction: column; margin: 3rem 0;">
         
         <div class="icons">
-          <%footer.forEach(logo => {  %>
+          <%footer.forEach((logo) => {  %>
             <div class="footer-logos">
-              <a href="<%=logo.logo_url%>" target="_blank">
-                <img src="/img/<%=logo.logo_image%>" alt="<%=logo.logo_name%>">
+              <a href="<%=logo.url%>" target="_blank">
+                <img src="/uploads/<%=logo.image%>" alt="<%=logo.name%>">
               </a>
             </div>
           <%});%>

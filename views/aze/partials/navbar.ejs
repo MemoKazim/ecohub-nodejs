@@ -1,6 +1,6 @@
 <nav class="navbar nav-container">
   <a href="/" class="logo"
-    ><img src="/img/green veritical.png" alt="Logo-img" class="nav-logo"
+    ><img src="/images/g_veritical.png" alt="Logo-img" class="nav-logo"
   /></a>
   <input type="checkbox" id="toggler" />
   <label for="toggler"><i class="fa-solid fa-bars"></i></label>
@@ -10,12 +10,11 @@
       <li>
         <a href="/aze/about"> HAQQIMIZDA </a>
         <ul class="sub-nav-header">
+          <%about.forEach((data)=>{%>
           <li>
-            <a href="/aze/about#who-are-we"> BİZ KİMİK? </a>
+            <a href="/aze/about#<%=data._id%>"><%-data.title.az-%></a>
           </li>
-          <li>
-            <a href="/aze/about#our-purpose"> VƏZİFƏMİZ </a>
-          </li>
+          <%});%>
           <li>
             <a href="/aze/about#our-team"> KOMANDAMIZ </a>
           </li>
@@ -27,13 +26,11 @@
       <li>
         <a href="/aze/projects"> LAYİHƏLƏR </a>
         <ul class="sub-nav-header">
-          <%for (var i = projects.length-1; i>=projects.length-5; i--){%>
+          <%projects.forEach((data) =>{%>
           <li>
-            <a href="/aze/projects#<%=projects[i].project_id%>"
-              ><%-projects[i].project_title_az-%></a
-            >
+            <a href="/aze/projects#<%=data._id%>"><%-data.title.az-%></a>
           </li>
-          <%}%>
+          <%})%>
         </ul>
       </li>
       <li><a href="/aze/news"> XƏBƏRLƏR </a></li>

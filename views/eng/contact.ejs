@@ -5,18 +5,12 @@
 
   <section id="map">
     <address class="adress">
+      <%contact.forEach((data)=>{%>
       <div class="info-col">
-        <h3>Address:</h3>
-        <p><%-contact[0].contact_address-%></p>
+        <h3><%-contact.title.en-%></h3>
+        <p><%-contact.content.en-%></p>
       </div>
-      <div class="info-col">
-        <h3>Phone:</h3>
-        <p><%-contact[0].contact_number-%></p>
-      </div>
-      <div class="info-col">
-        <h3>Email:</h3>
-        <p><%-contact[0].contact_email-%></p>
-      </div>
+      <%});%>
     </address>
     <div class="map-container">
       <iframe

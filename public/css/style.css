@@ -347,7 +347,7 @@ hr {
 .subheader-img {
   width: 100%;
   height: 100%;
-  background-image: url(/img/sub-rep-bg.jpg);
+  background-image: url(/images/sub-rep-bg.jpg);
   background-size: cover;
   background-position: top;
   display: flex;
@@ -580,7 +580,7 @@ hr {
   margin: 5rem 0 0 0;
   width: 95vw;
   height: 100%;
-  background-image: url(/img/about-us-bg.png);
+  background-image: url(/images/about-us-bg.png);
   background-position: bottom;
   background-size: cover;
   position: relative;
@@ -747,7 +747,7 @@ hr {
   position: relative;
   width: 100%;
   height: 70vh;
-  background-image: url(/img/news-bg.jpg);
+  background-image: url(/images/news-bg.jpg);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -882,7 +882,7 @@ hr {
 #footer {
   bottom: 0;
   height: fit-content;
-  background-image: url(/img/footer-bg.jpg);
+  background-image: url(/images/footer-bg.jpg);
   background-position: left;
   background-size: cover;
   position: relative;
@@ -972,7 +972,7 @@ hr {
 .footer-bottom-logo {
   width: 10rem;
   height: 5rem;
-  background-image: url(/img/white_veritical.png);
+  background-image: url(/images/white_veritical.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

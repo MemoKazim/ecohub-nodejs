@@ -7,19 +7,18 @@
     <div class="sub-projects-container">
       <div class="sub-projects-content">
         <%projects.forEach(project =>{%>
-        <div id="<%=project.project_id%>" class="sub-title">
-          <h3><%-project.project_title_az-%></h3>
+        <div id="<%=project._id%>" class="sub-title">
+          <h3><%-project.title.az-%></h3>
         </div>
         <div class="sub-content">
-          <p><%-project.project_content_az-%></p>
-          <%if(project.project_images !== null) {%>
-          <%if(JSON.parse(project.project_images)[0].split('.').slice(-1) ==
-          'mp4') {%>
+          <p><%-project.description.az-%></p>
+          <%if(project.images !== null) {%>
+          <%if(JSON.parse(project.images)[0].split('.').slice(-1) == 'mp4') {%>
           <div class="video-of-projects-container">
             <div class="video-of-projects">
               <video controls="">
                 <source
-                  src="/img/<%=JSON.parse(project.project_images)[0]%>"
+                  src="/uploads/<%=JSON.parse(project.images)[0]%>"
                   type="video/mp4"
                 />
               </video>
@@ -29,11 +28,11 @@
           <div class="slider-of-projects-container">
             <div class="slider-of-projects">
               <ul class="slideWrap-of-projects">
-                <%JSON.parse(project.project_images).forEach((img)=>{ %>
+                <%JSON.parse(project.images).forEach((img)=>{ %>
                 <li>
                   <div
                     class="projects-image"
-                    style="background-image: url(/img/<%=img%>)"
+                    style="background-image: url(/uploads/<%=img%>)"
                   ></div>
                 </li>
                 <%});%>
@@ -49,9 +48,7 @@
         <ul>
           <%projects.forEach(project =>{ %>
           <li>
-            <a href="#<%=project.project_id%>">
-              <%-project.project_title_az-%>
-            </a>
+            <a href="#<%=project._id%>"> <%-project.title.az-%> </a>
           </li>
           <%});%>
         </ul>

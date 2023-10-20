@@ -4,24 +4,24 @@
   <%-include("partials/navigation" , {title: title, title_nav:title_nav});-%>
 
   <section id="news-extended">
-    <h1 class="news-header-sep"><%-news[0].new_title_az-%></h1>
-    <p class="news-date">Paylaşılıb: <%-news[0].news_date-%></p>
+    <h1 class="news-header-sep"><%-news.title.az-%></h1>
+    <p class="news-date">Paylaşılıb: <%-news.date-%></p>
 
-    <p class="news-content"><%-news[0].new_content_az-%></p>
+    <p class="news-content"><%-news.description.az-%></p>
 
     <div class="slideshow-container-news">
-      <%if (JSON.parse(news[0].new_images)[0].split('.').slice(-1) == 'mp4'){%>
+      <%if (JSON.parse(news.images)[0].split('.').slice(-1) == 'mp4'){%>
       <video class="news-video-content" controls="">
         <source
-          src="/img/<%=JSON.parse(news[0].new_images)[0]%>"
+          src="/uploads/<%=JSON.parse(news.images)[0]%>"
           type="video/mp4"
         />
       </video>
       <%}else{%>
       <a class="prev-1" onclick="plusSlides(-1)">&#10094;</a>
-      <%JSON.parse(news[0].new_images).forEach(elem => { %>
+      <%JSON.parse(news.images).forEach(elem => { %>
       <div class="mySlides">
-        <img src="/img/<%=elem%>" alt="slider-image" />
+        <img src="/uploads/<%=elem%>" alt="slider-image" />
       </div>
       <%})%>
       <a class="next-1" onclick="plusSlides(1)">&#10095;</a>

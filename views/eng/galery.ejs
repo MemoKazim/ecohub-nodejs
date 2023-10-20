@@ -2,18 +2,18 @@
 <body>
   <%-include("partials/navbar", {projects: projects});-%>
   <%-include("partials/navigation" , {title: title, title_nav:title_nav });-%>
-
+  <%galery.forEach((data)=>{%>
   <section id="eco-calendar">
     <div class="sub-title">
-      <h3>Eco Calendar</h3>
+      <h3><%-data.title.en-%></h3>
     </div>
     <div class="sub-content">
       <a class="eco-prev"><i class="fa-solid fa-angle-left"></i></a>
       <div id="eco-slider">
         <ul id="slide-wrap">
-          <%calendar.forEach(mon=>{%>
+          <%data.images.forEach(image=>{%>
           <li class="eco-item">
-            <img src="/img/<%=mon.cal_images%>" alt="eco-cal-img" />
+            <img src="/uploads/<%=image%>" alt="eco-cal-img" />
           </li>
           <%});%>
         </ul>
@@ -21,47 +21,6 @@
       <a class="eco-next"><i class="fa-solid fa-angle-right"></i></a>
     </div>
   </section>
-
-  <section id="sub-galery">
-    <div class="sub-content">
-      <div class="sub-title">
-        <h3>Galery</h3>
-      </div>
-      <div class="galery-slider-container">
-        <div class="galery-slider">
-          <div class="galery-slide-track">
-            <%galery.forEach(image =>{%>
-            <div class="galery-slide">
-              <img src="/img/<%=image.galery_images%>" alt="galery-img" />
-            </div>
-            <%})%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="sub-galery">
-    <div class="sub-content">
-      <div class="sub-title">
-        <h3>Did you know?</h3>
-      </div>
-      <div class="post-slider-container">
-        <div class="post-slider">
-          <div class="post-slide-track">
-            <%dyk.forEach( post => { %>
-            <div class="post-slide">
-              <a href="https://www.instagram.com/ecohub.az/" target="_blank">
-                <img src="/img/<%=post.dyk_images%>" alt="galery-img" />
-              </a>
-            </div>
-            <%})%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <%-include("partials/footer",{script: script, news:footer_news,
+  <%});%> <%-include("partials/footer",{script: script, news:footer_news,
   contact:contact, projects: projects, footer:logo});-%>
 </body>

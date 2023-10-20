@@ -5,32 +5,30 @@
 
   <section id="sub-news">
     <div class="section-news-container">
-      <%news.forEach(new_elem =>{ %>
+      <%news.forEach((data) =>{ %>
       <div class="news-item">
         <div class="news-item-container">
           <div
             class="news-item-img"
-            style="background-image: url('/img/<%=new_elem.new_cover%>')"
+            style="background-image: url('/uploads/<%=data.imageCover%>')"
           ></div>
           <div class="news-item-content">
             <div class="news-title">
-              <a href="/aze/news/<%=new_elem.new_id%>">
-                <%-new_elem.new_title_az-%>
-              </a>
+              <a href="/aze/news/<%=data._id%>"> <%-data.title.az-%> </a>
             </div>
             <div class="news-date">
               <i class="fa-solid fa-calendar-days"></i>
-              <p><%-new_elem.news_date-%></p>
+              <p><%-data.date-%></p>
             </div>
             <div class="news-read-more">
               <button>
-                <a href="/aze/news/<%=new_elem.new_id%>">ƏTRALI OXU</a>
+                <a href="/aze/news/<%=data._id%>">ƏTRALI OXU</a>
               </button>
             </div>
           </div>
         </div>
       </div>
-      <%})%>
+      <%});%>
     </div>
   </section>
 

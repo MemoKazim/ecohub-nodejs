@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "653234c104491c62249f69f5"
+  },
+  "name": {
+    "az": "memo",
+    "en": "memo"
+  },
+  "surname": {
+    "az": "kazim",
+    "en": "kazim"
+  },
+  "job": {
+    "az": "IT menecer",
+    "en": "IT manager"
+  },
+  "mail": "memo.kazimov@ecohub.az",
+  "imageCover": "sample.png"
+}]

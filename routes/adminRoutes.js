@@ -4,6 +4,9 @@ const adminController = require("../controllers/adminController");
 const authController = require("../controllers/authController");
 const AppError = require("../utils/appError");
 
+router.route("/").get(authController.getLogin).post(authController.postLogin);
+router.route("/?*").all(authController.isAuthenticated);
+
 //=============================|ABOUT|=================================//
 router
   .get("/abouts/", adminController.readAllAbout)
@@ -189,21 +192,9 @@ router
 
 //=============================|AUTHENTICATION|================================//
 //==================================|AREA|=====================================//
-router
-  .route("/signup")
-  .get(authController.getSignup)
-  .post(authController.postSignup);
-router
-  .route("/login")
-  .get(authController.getLogin)
-  .post(authController.postLogin);
+// router
+//   .route("/signup")
+//   .get(authController.getSignup)
+//   .post(authController.postSignup);
 
-// router.post(
-//   "/demo",
-//   adminController.uploadPhoto,
-//   adminController.compressPhoto,
-//   (req, res) => {
-//     console.log(req.file);
-//   }
-// );
 module.exports = router;

@@ -1,6 +1,7 @@
 const AppError = require("./../utils/appError");
 const User = require("./../models/userModel");
 const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
 
 /* SIGNUP !!!!! COMMENT AFTER CREATION OF USER */
 exports.getSignup = (req, res, next) => {
@@ -32,20 +33,40 @@ exports.getLogin = (req, res, next) => {
 
 exports.postLogin = async (req, res, next) => {
   const { email, password } = req.body;
+  const cookieOptions = {
+    expires: new Date(Date.now() + 60 * 60 * 1000),
+    httpOnly: true,
+  };
   if (!email || !password) {
     return next(new AppError("Please provide an email and password!", 400));
   }
-  Promise.all([User.find({ email: email }).select("+password")]).then(
-    ([user]) => {
-      user[0].correctPassword(user[0].password, password).then((result) => {
-        if (!result || !user) {
-          return next(new AppError("Incorrect username or password!", 401));
-        }
-        const token = jwt.sign({ id: user[0]._id }, process.env.JWT_SECRET, {
-          expiresIn: process.env.JWT_EXPIRES,
-        });
-        res.status(200).json({ status: "success", token: token });
-      });
-    }
-  );
+  const user = await User.find({ email: email }).select("+password");
+  const result = await user[0].correctPassword(user[0].password, password);
+  if (!result || !user) {
+    return next(new AppError("Incorrect username or password!", 401));
+  }
+  const token = await jwt.sign({ id: user[0]._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES,
+  });
+  console.log(token);
+  res
+    .status(200)
+    .cookie("jwt", token, cookieOptions)
+    .render("admin/index", { title: "AdminPanel" });
+};
+
+exports.isAuthenticated = async (req, res, next) => {
+  if (!req.headers.cookie) {
+    return next(new AppError("You are not authorized! Please log in", 401));
+  }
+  let token = req.headers.cookie.split("=")[1];
+
+  const decode = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  const freshUser = await User.findById(decode.id);
+  if (!freshUser) {
+    return next(
+      new AppError("This user with this token is no longer exists", 401)
+    );
+  }
+  next();
 };

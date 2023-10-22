@@ -1,0 +1,51 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/teams/update/<%=result._id%>" method="post">
+    <table>
+      <tr>
+        <td>
+          <label for="">Name: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="nameAz" placeholder="Az" value="<%=result.name.az%>">
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="nameEn" placeholder="En" value="<%=result.name.en%>">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Surname: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="surnameAz" placeholder="Az" value="<%=result.surname.az%>">
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="surnameEn" placeholder="En" value="<%=result.surname.en%>">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Job: </label>
+        </td>
+        <td>
+            <input type="text" class="text-fields" name="jobAz" placeholder="Az" value="<%=result.job.az%>">
+        </td>
+        <td>
+            <input type="text" class="text-fields" name="jobEn" placeholder="En" value="<%=result.job.en%>">
+        </td>
+      </tr>
+      <tr>
+        <td><label>Email: </label></td>
+        <td>
+          <input type="text" class="text-fields" name="mail" placeholder="email" value="<%=result.mail%>">
+        </td>
+      </tr>
+      <tr>
+        <td><button type="submit" class="button create">Submit</button></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

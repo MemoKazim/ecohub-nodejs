@@ -8,12 +8,9 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const multer = require("multer");
 const admin = require("./routes/adminRoutes");
 const eng = require("./routes/engRoutes");
 const aze = require("./routes/azeRoutes");
-const upload = multer({ dest: "public/uploads/" });
 // =============================| SETTINGS |=============================
 
 const app = express();

@@ -5,27 +5,18 @@
 
   <section id="news-extended">
     <h1 class="news-header-sep"><%-news.title.az-%></h1>
-    <p class="news-date">Paylaşılıb: <%-news.date-%></p>
+    <p class="news-date">Paylaşılıb: <%-news.date.getDate()-%>.<%-news.date.getMonth()-%>.<%-news.date.getFullYear()-%></p>
 
     <p class="news-content"><%-news.description.az-%></p>
 
     <div class="slideshow-container-news">
-      <%if (JSON.parse(news.images)[0].split('.').slice(-1) == 'mp4'){%>
-      <video class="news-video-content" controls="">
-        <source
-          src="/uploads/<%=JSON.parse(news.images)[0]%>"
-          type="video/mp4"
-        />
-      </video>
-      <%}else{%>
       <a class="prev-1" onclick="plusSlides(-1)">&#10094;</a>
-      <%JSON.parse(news.images).forEach(elem => { %>
+      <%news.images.forEach(elem => { %>
       <div class="mySlides">
         <img src="/uploads/<%=elem%>" alt="slider-image" />
       </div>
       <%})%>
       <a class="next-1" onclick="plusSlides(1)">&#10095;</a>
-      <%}%>
     </div>
   </section>
   <%-include("partials/footer",{script: script, news:footer_news,

@@ -27,7 +27,6 @@ const homeAboutSchema = new mongoose.Schema({
   },
   isTop: {
     type: Boolean,
-    default: false,
   },
   date: {
     type: Date,

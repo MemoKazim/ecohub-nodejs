@@ -1,0 +1,34 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/abouts/create" method="post">
+    <table>
+      <tr>
+        <td>
+          <label for="">Title: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="titleAz" placeholder="Az">
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="titleEn" placeholder="En">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Description: </label>
+        </td>
+        <td>
+          <textarea type="text" class="textarea-fields" name="descriptionAz" placeholder="Az"></textarea>
+        </td>
+        <td>
+          <textarea type="text" class="textarea-fields" name="descriptionEn" placeholder="En"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td><button type="submit" class="button create">Submit</button></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

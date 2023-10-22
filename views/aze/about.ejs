@@ -1,6 +1,6 @@
 <%-include("partials/header" , {title: title});-%>
 <body>
-  <%-include("partials/navbar", {projects: projects, about:about});-%>
+  <%-include("partials/navbar", {projects: projects, about:lim_about});-%>
   <%-include("partials/navigation" , {title: title, title_nav:title_nav });-%>
 
   <section id="sub-about-us">
@@ -21,7 +21,7 @@
         <p>Haqqımızda</p>
         <ul>
           <%about.forEach((data)=>{%>
-          <li><a href="<%=data._id%>"><%-data.title.az-%></a></li>
+          <li><a href="/aze/about#<%=data._id%>"><%-data.title.az-%></a></li>
           <%});%>
           <li><a href="#our-team"> Komandamız </a></li>
           <li><a href="#partnership"> Tərəfdaşlar </a></li>
@@ -39,7 +39,7 @@
         <div class="col-1-of-2">
           <div class="card">
             <div class="card__side card__side--front">
-              <% if(employee.imageCover === null){ %>
+              <% if(employee.imageCover === undefined){ %>
                 <div
                 class="card__picture"
                 style="

@@ -42,7 +42,7 @@
                   <a href="/eng/news/<%=data._id%>">
                     <%-data.title.en-%>
                   </a>
-                  <p>Published: <%-data.date-%></p>
+                  <p>Published: <%-data.date.getDate()-%>.<%-data.date.getMonth()-%>.<%-data.date.getFullYear()-%></p>
                 </li>
               <%});%>
             </ul>

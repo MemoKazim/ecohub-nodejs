@@ -1,0 +1,24 @@
+<%-include("partials/header", {title: title, nav: nav})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <table class="styled-table table-1">
+    <thead>
+      <tr>
+        <td>Title Az</td>
+        <td>Title En</td>
+        <td>Description Az</td>
+        <td>Description En</td>
+        <td>Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%-result.title.az-%></td>
+        <td><%-result.title.en-%></td>
+        <td><%-result.description.az-%></td>
+        <td><%-result.description.en-%></td>
+        <td><%-result.date.getDate()-%>.<%-result.date.getMonth()-%>.<%-result.date.getFullYear()-%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

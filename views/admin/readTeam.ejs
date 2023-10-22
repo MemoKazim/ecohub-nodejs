@@ -1,0 +1,28 @@
+<%-include("partials/header", {title: title, nav: nav})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <table class="styled-table table-1">
+    <thead>
+      <tr>
+        <td>Name Az</td>
+        <td>Name En</td>
+        <td>Surname Az</td>
+        <td>Surname En</td>
+        <td>Job Az</td>
+        <td>Job En</td>
+        <td>Mail</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%-result.name.az-%></td>
+        <td><%-result.name.en-%></td>
+        <td><%-result.surname.az-%></td>
+        <td><%-result.surname.en-%></td>
+        <td><%-result.job.en-%></td>
+        <td><%-result.job.en-%></td>
+        <td><%-result.mail-%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,67 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/teams/create" method="post" enctype="multipart/form-data">
+    <table>
+      <tr>
+        <td>
+          <label for="">Name: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="nameAz" placeholder="Az">
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="nameEn" placeholder="En">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Surname: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="surnameAz" placeholder="Az">
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="surnameEn" placeholder="En">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Job: </label>
+        </td>
+        <td>
+            <input type="text" class="text-fields" name="jobAz" placeholder="Az">
+        </td>
+        <td>
+            <input type="text" class="text-fields" name="jobEn" placeholder="En">
+        </td>
+      </tr>
+      <tr>
+        <td><label>Email: </label></td>
+        <td>
+          <input type="text" class="text-fields" name="mail" placeholder="email">
+        </td>
+      </tr>
+      <tr>
+        <td><input accept="image/*" type="file" name="photo" id="imgInp"></td>
+      </tr>
+      <tr>
+        <td><img id="newImage" src="#" alt="your image" /></td>
+      </tr>
+      <tr>
+        <td><button type="submit" class="button create">Submit</button></td>
+      </tr>
+    </table>
+  </form>
+  <script>
+    const imgInp = document.querySelector("#imgInp")
+    const newImage = document.querySelector("#newImage")
+    imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+          newImage.src = URL.createObjectURL(file)
+        }
+    }
+  </script>
+</body>
+</html>

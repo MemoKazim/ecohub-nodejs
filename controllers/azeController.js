@@ -43,20 +43,23 @@ exports.getAbout = (req, res) => {
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
-  ]).then(([about, teams, partners, news, projects, contacts, logos]) => {
-    res.render("aze/about", {
-      title: "Haqqımızda",
-      title_nav: "about",
-      script: "about.js",
-      about: about,
-      employees: teams,
-      partners: partners,
-      footer_news: news,
-      projects: projects,
-      contact: contacts,
-      logo: logos,
-    });
-  });
+  ]).then(
+    ([about, teams, partners, news, projects, contacts, logos, lim_about]) => {
+      res.render("aze/about", {
+        title: "Haqqımızda",
+        title_nav: "about",
+        script: "about.js",
+        about: about,
+        lim_about: lim_about,
+        employees: teams,
+        partners: partners,
+        footer_news: news,
+        projects: projects,
+        contact: contacts,
+        logo: logos,
+      });
+    }
+  );
 };
 exports.getProjects = (req, res) => {
   Promise.all([
@@ -113,7 +116,7 @@ exports.getNew = (req, res) => {
       title_nav: "news",
       script: "news.js",
       about: about,
-      news: new_data,
+      news: new_data[0],
       projects: projects,
       footer_news: news,
       contact: contacts,

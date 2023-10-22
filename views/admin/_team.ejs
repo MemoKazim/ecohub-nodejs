@@ -1,0 +1,61 @@
+<%-include("partials/header", {title: title})-%>
+
+      <div class="asset-1">
+        <div class="title-create">
+            <h1><%-title-%></h1>
+            <a href="/admin/teams/create" class="button create">Create</a>
+        </div>
+        <table class="styled-table table-1">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Job</th>
+                    <th>Mail</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let counter = 1;
+                result.forEach((data)=>{%>
+                    <tr>
+                        <td><%-counter-%></td>
+                        <td><%-data.name.az-%></td>
+                        <td><%-data.surname.az-%></td>
+                        <td><%-data.job.az-%></td>
+                        <td><%-data.mail-%></td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <form action="/admin/teams/<%=data._id%>" method="get">
+                                            <button type="submit" class="button read">Read</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/admin/teams/update/<%=data._id%>" method="get">
+                                            <button type="submit" class="button update">Update</button>   
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/admin/teams/update/photo/<%=data._id%>" method="get">
+                                            <button type="submit" class="button update">Update Photo</button>   
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/admin/teams/delete/<%=data._id%>" method="post">
+                                            <button type="submit" class="button delete">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                <%counter+=1})%>
+            </tbody>
+        </table>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

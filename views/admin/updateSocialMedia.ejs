@@ -1,0 +1,27 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/socialmedias/update/<%=result._id%>" method="post">
+    <table>
+        <tr>
+            <td>
+            <label for="">Name: </label>
+            </td>
+            <td>
+            <input type="text" class="text-fields" name="name" placeholder="Name" value="<%=result.name%>">
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <label for="">Url: </label>
+            </td>
+            <td>
+            <input type="text" class="text-fields" name="url" placeholder="Url" value="<%=result.url%>">
+            </td>
+        </tr>
+      <tr>
+        <td><button type="submit" class="button update">Submit</button></td>
+      </tr>
+    </table>
+  </form>
+</div>

@@ -1,48 +1,47 @@
 <%-include("partials/header", {title: title})-%>
 <div class="asset-1">
   <%-include("partials/goBack", {nav: nav})-%>
-  <form action="/admin/teams/create" method="post" enctype="multipart/form-data">
+  <form action="/admin/homesliders/create" method="post" enctype="multipart/form-data">
     <table>
       <tr>
         <td>
-          <label for="">Name: </label>
+          <label for="">Top title: </label>
         </td>
         <td>
-          <input type="text" class="text-fields" name="nameAz" placeholder="Az">
+          <input type="text" class="text-fields" name="titleTopAz" placeholder="Az">
         </td>
         <td>
-          <input type="text" class="text-fields" name="nameEn" placeholder="En">
+          <input type="text" class="text-fields" name="titleTopEn" placeholder="En">
         </td>
       </tr>
       <tr>
         <td>
-          <label for="">Surname: </label>
+          <label for="">Top bottom: </label>
         </td>
         <td>
-          <input type="text" class="text-fields" name="surnameAz" placeholder="Az">
+          <input type="text" class="text-fields" name="titleBottomAz" placeholder="Az">
         </td>
         <td>
-          <input type="text" class="text-fields" name="surnameEn" placeholder="En">
+          <input type="text" class="text-fields" name="titleBottomEn" placeholder="En">
         </td>
       </tr>
       <tr>
+        <td><label for="">Is there gonna be 'Read More' field?</label></td>
         <td>
-          <label>Job: </label>
-        </td>
-        <td>
-            <input type="text" class="text-fields" name="jobAz" placeholder="Az">
-        </td>
-        <td>
-            <input type="text" class="text-fields" name="jobEn" placeholder="En">
+            <select name="isNewData" id="">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
         </td>
       </tr>
       <tr>
-        <td><label>Email: </label></td>
+        <td><label for="">Date:</label></td>
         <td>
-          <input type="text" class="text-fields" name="mail" placeholder="email">
+            <input type="date" name="date">
         </td>
       </tr>
       <tr>
+        <td>Image: </td>
         <td><input accept="image/*" type="file" name="image" id="imgInp"></td>
       </tr>
       <tr>

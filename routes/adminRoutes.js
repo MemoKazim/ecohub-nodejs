@@ -23,17 +23,27 @@ router
   .post("/contacts/update/:id", adminController.updateContact)
   .post("/contacts/delete/:id", adminController.deleteContact)
   .get("/contacts/:id", adminController.readContact);
-/*
+
 //=============================|GALERY|=================================//
 router
   .get("/galeries/", adminController.readAllGalery)
   .get("/galeries/create", adminController.createGetGalery)
-  .post("/galeries/create", adminController.createGalery)
+  .post(
+    "/galeries/create",
+    adminController.uploadPhotos,
+    adminController.createGalery
+  )
+  .get("/galeries/update/photo/:id", adminController.updateGetGaleryPhoto)
+  .post(
+    "/homesliders/update/photo/:id",
+    adminController.uploadPhotos,
+    adminController.updateGaleryPhoto
+  )
   .get("/galeries/update/:id", adminController.updateGetGalery)
   .post("/galeries/update/:id", adminController.updateGalery)
   .post("/galeries/delete/:id", adminController.deleteGalery)
   .get("/galeries/:id", adminController.readGalery);
-*/
+
 //=============================|HOME-ABOUT|=================================//
 router
   .get("/homeabouts/", adminController.readAllHomeAbout)
@@ -44,18 +54,28 @@ router
   .post("/homeabouts/delete/:id", adminController.deleteHomeAbout)
   .get("/homeabouts/:id", adminController.readHomeAbout);
 
-/*
 //=============================|HOME-SLIDER|=================================//
 router
   .get("/homesliders/", adminController.readAllHomeSlider)
   .get("/homesliders/create", adminController.createGetHomeSlider)
-  .post("/homesliders/create", adminController.createHomeSlider)
+  .post(
+    "/homesliders/create",
+    adminController.uploadPhoto,
+    adminController.createHomeSlider
+  )
+  .get(
+    "/homesliders/update/photo/:id",
+    adminController.updateGetHomeSliderPhoto
+  )
+  .post(
+    "/homesliders/update/photo/:id",
+    adminController.uploadPhoto,
+    adminController.updateHomeSliderPhoto
+  )
   .get("/homesliders/update/:id", adminController.updateGetHomeSlider)
   .post("/homesliders/update/:id", adminController.updateHomeSlider)
   .post("/homesliders/delete/:id", adminController.deleteHomeSlider)
   .get("/homesliders/:id", adminController.readHomeSlider);
-
-*/
 
 //=============================|NEW|=================================//
 router
@@ -93,29 +113,48 @@ router
   .post("/partners/delete/:id", adminController.deletePartner)
   .get("/partners/:id", adminController.readPartner);
 
-/*
 //=============================|PROJECT|=================================//
 router
   .get("/projects/", adminController.readAllProject)
   .get("/projects/create", adminController.createGetProject)
-  .post("/projects/create", adminController.createProject)
+  .post(
+    "/projects/create",
+    adminController.uploadPhotos,
+    adminController.createProject
+  )
+  .get("/projects/update/photo/:id", adminController.updateGetProjectPhoto)
+  .post(
+    "/projects/update/photo/:id",
+    adminController.uploadPhoto,
+    adminController.updateProjectPhoto
+  )
   .get("/projects/update/:id", adminController.updateGetProject)
   .post("/projects/update/:id", adminController.updateProject)
   .post("/projects/delete/:id", adminController.deleteProject)
   .get("/projects/:id", adminController.readProject);
 
-
 //=============================|SOCIAL-MEDIA|=================================//
 router
-  .get("/socialMedias/", adminController.readAllSocialMedia)
-  .get("/socialMedias/create", adminController.createGetSocialMedia)
-  .post("/socialMedias/create", adminController.createSocialMedia)
-  .get("/socialMedias/update/:id", adminController.updateGetSocialMedia)
-  .post("/socialMedias/update/:id", adminController.updateSocialMedia)
-  .post("/socialMedias/delete/:id", adminController.deleteSocialMedia)
-  .get("/socialMedias/:id", adminController.readSocialMedia);
-
-*/
+  .get("/socialmedias/", adminController.readAllSocialMedia)
+  .get("/socialmedias/create", adminController.createGetSocialMedia)
+  .post(
+    "/socialmedias/create",
+    adminController.uploadPhoto,
+    adminController.createSocialMedia
+  )
+  .get(
+    "/socialmedias/update/photo/:id",
+    adminController.updateGetSocialMediaPhoto
+  )
+  .post(
+    "/socialmedias/update/photo/:id",
+    adminController.uploadPhoto,
+    adminController.updateSocialMediaPhoto
+  )
+  .get("/socialmedias/update/:id", adminController.updateGetSocialMedia)
+  .post("/socialmedias/update/:id", adminController.updateSocialMedia)
+  .post("/socialmedias/delete/:id", adminController.deleteSocialMedia)
+  .get("/socialmedias/:id", adminController.readSocialMedia);
 
 //=============================|TEAM|=================================//
 router
@@ -142,8 +181,8 @@ router
 //=============================|USER|=================================//
 router.route("/users").get(adminController.readAllUser);
 router
-  .route("/users/:id")
-  .get(adminController.readUser)
+  .route("/users/updatepassword/:id")
+  .get(adminController.updateUser)
   .put(adminController.updateUser);
 
 */

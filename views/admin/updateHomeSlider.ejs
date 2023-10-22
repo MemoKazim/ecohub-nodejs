@@ -1,0 +1,52 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/contacts/update/<%=result._id%>" method="post">
+    <table>
+      <tr>
+        <td>
+          <label for="">Top Title: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="titleTopAz" placeholder="Az" value="<%=result.titleTop.az%>">
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="titleTopEn" placeholder="En" value="<%=result.titleTop.en%>">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Bottom Title: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="titleBottomAz" placeholder="Az" value="<%=result.titleBottom.az%>">
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="titleBottomEn" placeholder="En" value="<%=result.titleBottom.en%>">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="">Is Contains New's Data?: </label></td>
+        <td>
+            <select name="isNewData">
+                <%if (result.isNewData){%>
+                    <option value="true" selected>Yes</option>
+                    <option value="false">No</option>
+                <%} else {%>
+                    <option value="true">Yes</option>
+                    <option value="false" selected>No</option>
+                <%}%>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Date: </label>
+          <input type="date" name="date" id="date" value="<%=result.date.getFullYear()%>-<%=String(result.date.getMonth() + 1).padStart(2, '0')%>-<%=String(result.date.getDate()).padStart(2, '0')%>">
+        </td>
+      </tr>
+      <tr>
+        <td><button type="submit" class="button update">Submit</button></td>
+      </tr>
+    </table>
+  </form>

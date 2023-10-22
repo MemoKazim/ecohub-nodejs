@@ -1,0 +1,26 @@
+<%-include("partials/header", {title: title, nav: nav})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <table class="styled-table table-1">
+    <thead>
+      <tr>
+        <td>Top Title Az</td>
+        <td>Top Title En</td>
+        <td>Bottom Title Az</td>
+        <td>Bottom Title En</td>
+        <td>Is New's Data</td>
+        <td>Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%-result.titleTop.az-%></td>
+        <td><%-result.titleTop.en-%></td>
+        <td><%-result.titleBottom.az-%></td>
+        <td><%-result.titleBottom.en-%></td>
+        <td><%-result.isNewData-%></td>
+        <td><%-result.date.getDate()-%>.<%-result.date.getMonth()-%>.<%-result.date.getFullYear()-%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

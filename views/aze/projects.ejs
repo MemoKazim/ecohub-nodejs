@@ -12,23 +12,10 @@
         </div>
         <div class="sub-content">
           <p><%-project.description.az-%></p>
-          <%if(project.images !== null) {%>
-          <%if(JSON.parse(project.images)[0].split('.').slice(-1) == 'mp4') {%>
-          <div class="video-of-projects-container">
-            <div class="video-of-projects">
-              <video controls="">
-                <source
-                  src="/uploads/<%=JSON.parse(project.images)[0]%>"
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-          </div>
-          <%}else{%>
           <div class="slider-of-projects-container">
             <div class="slider-of-projects">
               <ul class="slideWrap-of-projects">
-                <%JSON.parse(project.images).forEach((img)=>{ %>
+                <%project.images.forEach((img)=>{ %>
                 <li>
                   <div
                     class="projects-image"
@@ -39,7 +26,6 @@
               </ul>
             </div>
           </div>
-          <%}};%>
         </div>
         <%});%>
       </div>

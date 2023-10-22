@@ -1,0 +1,39 @@
+<%-include("partials/header", {title: title})-%>
+<div class="asset-1">
+  <%-include("partials/goBack", {nav: nav})-%>
+  <form action="/admin/partners/update/photo/<%=result._id%>" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>
+                <label for="oldImage">Old Cover Image: </label>
+                <img id="oldImage" src="/uploads/<%=result.image%>" alt="old-image" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="imgInp">Upload Cover Image: </label>
+                <input type="file" name="image" id="imgInp" accept="image/*">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="newImage">New Cover Image: </label>
+                <img id="newImage" src="#" alt="new-image" />
+            </td>
+        <tr>
+        <td><button type="submit" class="button update">Submit</button></td>
+      </tr>
+    </table>
+  </form>
+  <script>    
+        const imgInp = document.querySelector("#imgInp")
+        const newImage = document.querySelector("#newImage")
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                newImage.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
+</body>
+</html>

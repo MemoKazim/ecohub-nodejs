@@ -3,15 +3,15 @@
       <div class="asset-1">
         <div class="title-create">
             <h1><%-title-%></h1>
-            <a href="/admin/homeabouts/create" class="button create">Create</a>
+            <a href="/admin/homesliders/create" class="button create">Create</a>
         </div>
         <table class="styled-table table-1">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>isTop</th>
+                    <th>Top title</th>
+                    <th>Bottom title</th>
+                    <th>Contains new's data</th>
                     <th>Date</th>
                     <th>Action</th>
                 </tr>
@@ -21,25 +21,30 @@
                 result.forEach((data)=>{%>
                     <tr>
                         <td><%-counter-%></td>
-                        <td><%-data.title.az-%></td>
-                        <td><%-data.description.az.substring(0,50);-%>...</td>
-                        <td><%-data.isTop-%></td>
+                        <td><%-data.titleTop.az-%></td>
+                        <td><%-data.titleBottom.az-%></td>
+                        <td><%-data.isNewData-%></td>
                         <td><%-data.date.getDate()-%>.<%-data.date.getMonth()-%>.<%-data.date.getFullYear()-%></td>
                         <td>
                             <table>
                                 <tr>
                                     <td>
-                                        <form action="/admin/homeabouts/<%=data._id%>" method="get">
+                                        <form action="/admin/homesliders/<%=data._id%>" method="get">
                                             <button type="submit" class="button read">Read</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="/admin/homeabouts/update/<%=data._id%>" method="get">
+                                        <form action="/admin/homesliders/update/<%=data._id%>" method="get">
                                             <button type="submit" class="button update">Update</button>   
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="/admin/homeabouts/delete/<%=data._id%>" method="post">
+                                        <form action="/admin/homesliders/update/photo/<%=data._id%>" method="get">
+                                            <button type="submit" class="button update">Update Photo</button>   
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/admin/homesliders/delete/<%=data._id%>" method="post">
                                             <button type="submit" class="button delete">Delete</button>
                                         </form>
                                     </td>

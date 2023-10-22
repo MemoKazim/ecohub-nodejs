@@ -1,18 +1,14 @@
 <%-include("partials/header", {title: title})-%>
-
-      <div class="asset-1">
+    <div class="asset-1">
         <div class="title-create">
             <h1><%-title-%></h1>
-            <a href="/admin/homeabouts/create" class="button create">Create</a>
+            <a href="/admin/galeries/create" class="button create">Create</a>
         </div>
         <table class="styled-table table-1">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Title</th>
-                    <th>Description</th>
-                    <th>isTop</th>
-                    <th>Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -22,24 +18,26 @@
                     <tr>
                         <td><%-counter-%></td>
                         <td><%-data.title.az-%></td>
-                        <td><%-data.description.az.substring(0,50);-%>...</td>
-                        <td><%-data.isTop-%></td>
-                        <td><%-data.date.getDate()-%>.<%-data.date.getMonth()-%>.<%-data.date.getFullYear()-%></td>
                         <td>
                             <table>
                                 <tr>
                                     <td>
-                                        <form action="/admin/homeabouts/<%=data._id%>" method="get">
+                                        <form action="/admin/galeries/<%=data._id%>" method="get">
                                             <button type="submit" class="button read">Read</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="/admin/homeabouts/update/<%=data._id%>" method="get">
+                                        <form action="/admin/galeries/update/<%=data._id%>" method="get">
                                             <button type="submit" class="button update">Update</button>   
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="/admin/homeabouts/delete/<%=data._id%>" method="post">
+                                        <form action="/admin/galeries/update/photo/<%=data._id%>" method="get">
+                                            <button type="submit" class="button update">Update Photo</button>   
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/admin/galeries/delete/<%=data._id%>" method="post">
                                             <button type="submit" class="button delete">Delete</button>
                                         </form>
                                     </td>

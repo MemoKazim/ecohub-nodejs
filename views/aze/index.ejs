@@ -5,32 +5,33 @@
     <section id="slide-show">
       <div class="slideshow-container">
         <div class="slider-container">
-          <%slider.forEach( (data) => {
+          <%slider.forEach( (slide) => {
             if (slide.isNewData){%>
               <div class="mySlides fade"  style="background-image:
               linear-gradient(
                 to bottom,
                 rgba(0, 0, 0, 0.3),
                 rgba(0, 0, 0, 0.7)
-              ), url('/uploads/<%=slide.imageCover%>');">
+              ), url('/uploads/<%=slide.imageCover%>');
+              height: 100%;">
                 <h2 class="slider-img-text"><%-slide.titleTop.az-%></h2>
                 <h2 class="slider-img-text-bottom"><%-slide.titleBottom.az-%></h2>
                 <a href="/aze/news" class="header-more header-more-text">Ətraflı</a>
               </div>
             <%}else{%>
-              <div class="mySlides fade" style="background-image: url('/img/<%=slide.slide_image%>');">
+              <div class="mySlides fade" style="background-image: url('/uploads/<%=slide.imageCover%>'); height: 100%;">
                 <h2 class="slider-img-text"><%-slide.titleTop.az-%></h2>
                 <h2 class="slider-img-text-bottom"><%-slide.titleBottom.az-%></h2>
               </div>
             <%}})%>
         </div>
         <div class="slider-controller-left">
-          <a class="prev-1" onclick="plusSlides(-1)">
+          <a class="prev-1" onclick="plusSlides(-1)" style="height: 100%;">
             <i class="fa-solid fa-angle-left"></i>
           </a>
         </div>
         <div class="slider-controller-right">
-          <a class="next-1" onclick="plusSlides(1)">
+          <a class="next-1" onclick="plusSlides(1)" style="height: 100%;">
             <i class="fa-solid fa-angle-right"></i>
           </a>
         </div>

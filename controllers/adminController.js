@@ -26,7 +26,12 @@ const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image") || file.mimetype.startsWith("video")) {
     cb(null, true);
   } else {
-    cb(new AppError("Only image and video allowed!!", 400), false);
+    cb(
+      res
+        .status(400)
+        .redirect(req.path, { message: "Only image and video allowed!" }),
+      false
+    );
   }
 };
 
@@ -1067,9 +1072,34 @@ exports.deleteTeam = async (req, res) => {
 };
 
 //=============================|USER|=================================//
-exports.readAllUser = (req, res) => {};
-exports.readUser = (req, res) => {};
-exports.changePassword = (req, res) => {};
+exports.readAllUser = async (req, res) => {
+  const user = await User.find({});
+  res.status(200).render("admin/_user", { result: user, title: "Users" });
+};
+exports.updateGetUser = async (req, res) => {
+  const singleUser = await User.findById(req.params.id);
+  res.status(200).render("admin/updateUser", {
+    result: singleUser,
+    title: "Update User",
+    nav: "users",
+  });
+};
+exports.updateUser = async (req, res) => {
+  let update = {};
+  let bluePrint = {
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+  };
+  for (const key of Object.keys(bluePrint)) {
+    if (bluePrint[key] !== "") {
+      update[key] = bluePrint[key];
+    }
+  }
+  await User.findOneAndUpdate({ _id: req.params.id }, update);
+
+  res.status(204).redirect("/admin/users");
+};
 
 //=============================|IMAGE|=================================//
 exports.compressPhoto = (req, res, next) => {

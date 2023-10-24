@@ -5,32 +5,33 @@
     <section id="slide-show">
       <div class="slideshow-container">
         <div class="slider-container">
-          <%slider.forEach( (data) => {
+          <%slider.forEach( (slide) => {
             if (slide.isNewData){%>
               <div class="mySlides fade"  style="background-image:
               linear-gradient(
                 to bottom,
                 rgba(0, 0, 0, 0.3),
                 rgba(0, 0, 0, 0.7)
-              ), url('/uploads/<%=slide.imageCover%>');">
+              ), url('/uploads/<%=slide.imageCover%>');
+              height: 100%;">
                 <h2 class="slider-img-text"><%-slide.titleTop.en-%></h2>
                 <h2 class="slider-img-text-bottom"><%-slide.titleBottom.en-%></h2>
                 <a href="/eng/news" class="header-more header-more-text">Ətraflı</a>
               </div>
             <%}else{%>
-              <div class="mySlides fade" style="background-image: url('/img/<%=slide.slide_image%>');">
+              <div class="mySlides fade" style="background-image: url('/img/<%=slide.slide_image%>'); height: 100%;">
                 <h2 class="slider-img-text"><%-slide.titleTop.en-%></h2>
                 <h2 class="slider-img-text-bottom"><%-slide.titleBottom.en-%></h2>
               </div>
             <%}})%>
         </div>
         <div class="slider-controller-left">
-          <a class="prev-1" onclick="plusSlides(-1)">
+          <a class="prev-1" onclick="plusSlides(-1)" style="height: 100%;">
             <i class="fa-solid fa-angle-left"></i>
           </a>
         </div>
         <div class="slider-controller-right">
-          <a class="next-1" onclick="plusSlides(1)">
+          <a class="next-1" onclick="plusSlides(1)" style="height: 100%;">
             <i class="fa-solid fa-angle-right"></i>
           </a>
         </div>
@@ -74,7 +75,7 @@
         <div class="slider-wrap">
           <div class="projects-header">
             <a href="/eng/projects">
-              <h2>Layihələrimiz</h2>
+              <h2>Projects</h2>
             </a>
           </div>
           <div class="slider-main" id="slider-main">
@@ -84,7 +85,7 @@
                 <img src="/uploads/<%=project.imageCover%>" alt="projects-image">
                 <p class="slider-text"><%-project.title.en-%></p>
                 <a href="/eng/projects" class="slider-text">
-                  Ətraflı
+                  More
                 </a>
               </div>
             </div>
@@ -107,11 +108,11 @@
         <div class="news-header">
           <div class="header">
             <a href="/eng/news">
-              <h2>Xəbərlər</h2>
+              <h2>News</h2>
             </a>
           </div>
           <div class="header-more">
-            <a class="header-more-text" href="/eng/news"> Daha Çox </a>
+            <a class="header-more-text" href="/eng/news"> Read More </a>
           </div>
         </div>
         <div class="news-main">

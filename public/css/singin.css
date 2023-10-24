@@ -51,3 +51,11 @@ body {
     font-size: 3.5rem;
   }
 }
+.message {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #e73e3c;
+  border-radius: 3px;
+  color: #e73e3c;
+  background-color: #fcd4cc;
+  margin-bottom: 0.5rem;
+}

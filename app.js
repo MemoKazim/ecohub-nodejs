@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.render("eng/404", { title: "404" });
+  res.render("error/404");
 });
 
 module.exports = app;

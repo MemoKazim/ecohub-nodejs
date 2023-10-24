@@ -29,6 +29,10 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });
+userSchema.pre("findOneAndUpdate", async function (next) {
+  this._update.password = await bcrypt.hash(this._update.password, 12);
+  next();
+});
 
 userSchema.methods.correctPassword = async function correctPassword(
   existPass,

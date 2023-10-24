@@ -5,7 +5,7 @@ const authController = require("../controllers/authController");
 const AppError = require("../utils/appError");
 
 router.route("/").get(authController.getLogin).post(authController.postLogin);
-router.route("/?*").all(authController.isAuthenticated);
+// router.route("/?*").all(authController.isAuthenticated);
 
 //=============================|ABOUT|=================================//
 router
@@ -180,21 +180,19 @@ router
   .post("/teams/delete/:id", adminController.deleteTeam)
   .get("/teams/:id", adminController.readTeam);
 
-/*
 //=============================|USER|=================================//
 router.route("/users").get(adminController.readAllUser);
 router
   .route("/users/updatepassword/:id")
-  .get(adminController.updateUser)
-  .put(adminController.updateUser);
-
-*/
+  .get(adminController.updateGetUser)
+  .post(adminController.updateUser);
 
 //=============================|AUTHENTICATION|================================//
 //==================================|AREA|=====================================//
-// router
-//   .route("/signup")
-//   .get(authController.getSignup)
-//   .post(authController.postSignup);
+
+router
+  .route("/signup")
+  .get(authController.getSignup)
+  .post(authController.postSignup);
 
 module.exports = router;

@@ -14,7 +14,7 @@ exports.postSignup = (req, res, next) => {
     email: req.body.email,
     isAdmin: true,
   });
-  newUser.save().then(console.log("New User Created!"));
+  newUser.save();
   const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES,
   });
@@ -28,7 +28,7 @@ exports.postSignup = (req, res, next) => {
 };
 
 exports.getLogin = (req, res, next) => {
-  res.render("admin/login");
+  res.render("admin/login", { message: undefined });
 };
 
 exports.postLogin = async (req, res, next) => {
@@ -38,35 +38,38 @@ exports.postLogin = async (req, res, next) => {
     httpOnly: true,
   };
   if (!email || !password) {
-    return next(new AppError("Please provide an email and password!", 400));
+    return res
+      .status(400)
+      .render("admin/login", { message: "Incorrect username or password" });
   }
   const user = await User.find({ email: email }).select("+password");
   const result = await user[0].correctPassword(user[0].password, password);
   if (!result || !user) {
-    return next(new AppError("Incorrect username or password!", 401));
+    return res
+      .status(401)
+      .render("admin/login", { message: "Incorrect username or password" });
   }
   const token = await jwt.sign({ id: user[0]._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES,
   });
-  console.log(token);
-  res
+  return res
     .status(200)
     .cookie("jwt", token, cookieOptions)
     .render("admin/index", { title: "AdminPanel" });
 };
 
 exports.isAuthenticated = async (req, res, next) => {
-  if (!req.headers.cookie) {
-    return next(new AppError("You are not authorized! Please log in", 401));
+  if (!req.headers.cookie || req.headers.cookie === undefined) {
+    return res.render("error/401", { message: "You are not authorized!" });
   }
   let token = req.headers.cookie.split("=")[1];
 
   const decode = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
   const freshUser = await User.findById(decode.id);
   if (!freshUser) {
-    return next(
-      new AppError("This user with this token is no longer exists", 401)
-    );
+    return res.status(401).render("admin/login", {
+      message: "This user with this token is no longer exists",
+    });
   }
   next();
 };

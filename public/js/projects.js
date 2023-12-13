@@ -6,7 +6,7 @@ var responsiveSlider = function (slider, slideList) {
   var next = document.getElementById("next");
 
   window.addEventListener("resize", function () {
-    sliderWidth = slider.offsetWidth;
+    sliderWidth = screen.width;
   });
 
   var prevSlide = function () {

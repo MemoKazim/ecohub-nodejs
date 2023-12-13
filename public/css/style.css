@@ -169,7 +169,7 @@
     gap: 1rem !important;
   }
   .main-topic {
-    padding-top: 6rem;
+    padding-top: 8rem;
     width: 100% !important;
   }
   .sub-topic {
@@ -282,6 +282,9 @@
   }
   .map-container {
     height: 60vh !important;
+  }
+  .img-container img {
+    width: 80vw !important;
   }
 }
 

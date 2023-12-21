@@ -72,7 +72,6 @@ exports.createAbout = async (req, res) => {
       res.status(201).redirect("/admin/abouts");
     });
 };
-
 exports.updateGetAbout = async (req, res) => {
   const singleAbout = await About.findById(req.params.id).catch((err) => {
     throw err;
@@ -151,7 +150,6 @@ exports.createContact = async (req, res) => {
       res.status(201).redirect("/admin/contacts");
     });
 };
-
 exports.updateGetContact = async (req, res) => {
   const singleContact = await Contact.findById(req.params.id).catch((err) => {
     throw err;
@@ -232,7 +230,6 @@ exports.createGalery = async (req, res) => {
       res.status(201).redirect("/admin/galeries");
     });
 };
-
 exports.updateGetGalery = async (req, res) => {
   const singleGalery = await Galery.findById({ _id: req.params.id }).catch(
     (err) => {
@@ -333,7 +330,6 @@ exports.createHomeAbout = async (req, res) => {
       res.status(201).redirect("/admin/homeabouts");
     });
 };
-
 exports.updateGetHomeAbout = async (req, res) => {
   const singleHomeAbout = await HomeAbout.findById(req.params.id).catch(
     (err) => {
@@ -444,7 +440,6 @@ exports.createHomeSlider = async (req, res) => {
       });
   }
 };
-
 exports.updateGetHomeSlider = async (req, res) => {
   const singleHomeSlider = await HomeSlider.findById({
     _id: req.params.id,
@@ -470,7 +465,8 @@ exports.updateGetHomeSliderPhoto = async (req, res) => {
   });
 };
 exports.updateHomeSliderPhoto = async (req, res) => {
-  const upData = await HomeSlider.findOneAndUpdate(
+  console.log("I am here !!");
+  await HomeSlider.findOneAndUpdate(
     { _id: req.params.id },
     { imageCover: req.file.filename }
   );
@@ -577,7 +573,6 @@ exports.createNew = async (req, res) => {
       });
   }
 };
-
 exports.updateGetNew = async (req, res) => {
   const singleNew = await New.findById({ _id: req.params.id }).catch((err) => {
     throw err;
@@ -672,7 +667,6 @@ exports.createPartner = async (req, res) => {
       res.status(201).redirect("/admin/partners");
     });
 };
-
 exports.updateGetPartner = async (req, res) => {
   const singlePartner = await Partner.findById({ _id: req.params.id }).catch(
     (err) => {
@@ -775,7 +769,6 @@ exports.createProject = async (req, res) => {
       res.status(201).redirect("/admin/projects");
     });
 };
-
 exports.updateGetProject = async (req, res) => {
   const singleProject = await Project.findById({ _id: req.params.id }).catch(
     (err) => {
@@ -876,7 +869,6 @@ exports.createSocialMedia = async (req, res) => {
       res.status(201).redirect("/admin/socialmedias");
     });
 };
-
 exports.updateGetSocialMedia = async (req, res) => {
   const singleSocialMedia = await SocialMedia.findById({
     _id: req.params.id,
@@ -1001,7 +993,6 @@ exports.createTeam = async (req, res) => {
       });
   }
 };
-
 exports.updateGetTeam = async (req, res) => {
   const singleTeam = await Team.findById({ _id: req.params.id }).catch(
     (err) => {
@@ -1027,7 +1018,7 @@ exports.updateGetTeamPhoto = async (req, res) => {
   });
 };
 exports.updateTeamPhoto = async (req, res) => {
-  const upData = await Team.findOneAndUpdate(
+  await Team.findOneAndUpdate(
     { _id: req.params.id },
     { imageCover: req.file.filename }
   );

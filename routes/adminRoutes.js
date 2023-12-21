@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
 const authController = require("../controllers/authController");
-const AppError = require("../utils/appError");
 
 router.route("/").get(authController.getLogin).post(authController.postLogin);
 // router.route("/?*").all(authController.isAuthenticated);
@@ -38,7 +37,7 @@ router
   )
   .get("/galeries/update/photo/:id", adminController.updateGetGaleryPhoto)
   .post(
-    "/homesliders/update/photo/:id",
+    "/galeries/update/photo/:id",
     adminController.uploadPhotos,
     adminController.updateGaleryPhoto
   )

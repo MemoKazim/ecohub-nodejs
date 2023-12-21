@@ -300,7 +300,7 @@ exports.readAllHomeAbout = async (req, res) => {
   });
   res
     .status(200)
-    .render("admin/_homeAbout", { result: allHomeAbout, title: "HomeAbout" });
+    .render("admin/_homeabout", { result: allHomeAbout, title: "HomeAbout" });
 };
 exports.createGetHomeAbout = async (req, res) => {
   await res.status(200).render("admin/createHomeAbout", {

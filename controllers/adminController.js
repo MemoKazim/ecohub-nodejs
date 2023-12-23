@@ -929,7 +929,7 @@ exports.deleteSocialMedia = async (req, res) => {
 
 //=============================|TEAM|=================================//
 exports.readAllTeam = async (req, res) => {
-  const allTeam = await Team.find({}).catch((err) => {
+  const allTeam = await Team.find({}).sort({order: 1}).catch((err) => {
     throw err;
   });
   res.status(200).render("admin/_team", { result: allTeam, title: "Team" });
@@ -981,6 +981,7 @@ exports.createTeam = async (req, res) => {
         en: req.body.jobEn,
       },
       mail: req.body.mail,
+      order: req.body.order,
       imageCover: req.file.filename,
     });
     await newTeam
@@ -1048,6 +1049,7 @@ exports.updateTeam = async (req, res) => {
       en: req.body.jobEn,
     },
     mail: req.body.mail,
+    order: req.body.order
   };
   for (const key of Object.keys(bluePrint)) {
     if (bluePrint[key] !== "") {

@@ -41,6 +41,10 @@ const teamSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  order: {
+    type: Number,
+    required: true
+  },
   imageCover: String,
 });
 

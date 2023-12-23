@@ -36,7 +36,7 @@ exports.getIndex = (req, res) => {
 exports.getAbout = (req, res) => {
   Promise.all([
     About.find({}),
-    Team.find({}),
+    Team.find({}).sort({order: 1}),
     Partner.find({}),
     New.find({}).sort({ date: -1 }).limit(3),
     Project.find({}).sort({ date: -1 }).limit(4),

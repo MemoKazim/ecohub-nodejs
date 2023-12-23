@@ -811,19 +811,15 @@ exports.readProject = async (req, res) => {
 exports.updateProject = async (req, res) => {
   let update = {};
   let bluePrint = {
-    name: {
-      az: req.body.nameAz,
-      en: req.body.nameEn,
+    title: {
+      az: req.body.titleAz,
+      en: req.body.titleEn,
     },
-    surname: {
-      az: req.body.surnameAz,
-      en: req.body.surnameEn,
+    description: {
+      az: req.body.descriptionAz,
+      en: req.body.descriptionEn,
     },
-    job: {
-      az: req.body.jobAz,
-      en: req.body.jobEn,
-    },
-    mail: req.body.mail,
+    date: req.body.date,
   };
   for (const key of Object.keys(bluePrint)) {
     if (bluePrint[key] !== "") {

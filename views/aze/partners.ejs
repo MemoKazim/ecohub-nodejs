@@ -1,0 +1,19 @@
+<%-include("partials/header" , {title: title});-%>
+<body>
+  <%-include("partials/navbar", {projects: projects, about:about});-%>
+  <%-include("partials/navigation" , {title: title, title_nav:title_nav });-%>
+  <!--  -->
+  <div style="width: 100%; display: flex;justify-content: center;align-items: center;">
+
+    <div class="partners-box">
+      <%partners.forEach((partner) =>{%>
+        <%-include("partials/single_partner" , {image: partner.image, 
+          name: partner.name,
+          url: partner.url});-%>
+          <%});%>
+        </div>
+        
+      </div>
+  <%-include("partials/footer",{script: script, news:footer_news, contact:contact, projects: footer_projects, footer:logo});-%>
+
+</body>

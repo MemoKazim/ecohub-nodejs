@@ -1,0 +1,8 @@
+<%-include("partials/header" , {title: title});-%>
+<body>
+  <%-include("partials/navbar", {projects: projects, about:about});-%>
+  <%-include("partials/navigation" , {title: title, title_nav:title_nav });-%>
+  <!--  -->
+  <%-include("partials/footer",{script: script, news:footer_news,
+    contact:contact, projects: projects, footer:logo});-%>
+</body>

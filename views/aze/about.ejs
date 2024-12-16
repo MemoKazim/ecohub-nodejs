@@ -29,77 +29,62 @@
       </div>
     </div>
 
-  <section id="our-team">
-    <div class="sub-title">
-      <h3>Komandamız</h3>
-    </div>
-    <div class="sub-content">
-      <div class="our-team-container">
-        <% employees.forEach((employee)=>{ %>
-        <div class="col-1-of-2">
-          <div class="card">
-            <div class="card__side card__side--front">
-              <% if(employee.imageCover === undefined){ %>
+    <section id="our-team">
+      <div class="sub-title">
+        <h3>Komandamız</h3>
+      </div>
+      <div class="sub-content">
+        <div class="our-team-container">
+          <% employees.forEach((employee)=>{ %>
+          <div class="col-1-of-2">
+            <div class="card">
+              <div class="card__side card__side--front">
+                <% if(employee.imageCover === undefined){ %>
+                  <div
+                  class="card__picture"
+                  style="
+                    background-image: url(/images/nopic.jpg);
+                    background-position: bottom;
+                  "
+                >
+                <% } else { %>
                 <div
-                class="card__picture"
-                style="
-                  background-image: url(/images/nopic.jpg);
-                  background-position: bottom;
-                "
-              >
-              <% } else { %>
-              <div
-                class="card__picture"
-                style="
-                  background-image: url(/uploads/<%=employee.imageCover%>);
-                "
-              >
-              <% } %>
-                &nbsp;
+                  class="card__picture"
+                  style="
+                    background-image: url(/uploads/<%=employee.imageCover%>);
+                  "
+                >
+                <% } %>
+                  &nbsp;
+                </div>
+                <div class="card__side__details">
+                  <ul>
+                    <li><%-employee.name.az-%> <%-employee.surname.az-%></li>
+                  </ul>
+                </div>
               </div>
-              <div class="card__side__details">
-                <ul>
-                  <li><%-employee.name.az-%> <%-employee.surname.az-%></li>
-                </ul>
-              </div>
-            </div>
-            <div class="card__side card__side--back">
-              <div class="card__cta">
-                <div class="card__price-box">
-                  <div class="card__back__details">
-                    <ul>
-                      <li class="back-color">
-                        <%-employee.job.az-%>
-                      </li>
-                      <li class="back-color">
-                        <%-employee.mail-%>
-                      </li>
-                    </ul>
+              <div class="card__side card__side--back">
+                <div class="card__cta">
+                  <div class="card__price-box">
+                    <div class="card__back__details">
+                      <ul>
+                        <li class="back-color">
+                          <%-employee.job.az-%>
+                        </li>
+                        <li class="back-color">
+                          <%-employee.mail-%>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <%});%>
         </div>
-        <%});%>
       </div>
-    </div>
-  </section>
-  <section id="partnership">
-    <div class="sub-title">
-      <h3>Tərəfdaşlar</h3>
-    </div>
-    <div class="container">
-      <section class="customer-logos slider">
-        <%partners.forEach((partner)=>{%>
-        <div
-          class="slide"
-          style="background-image: url(/uploads/<%=partner.image%>)"
-        ></div>
-        <%});%>
-      </section>
-    </div>
-  </section>
+    </section>
   </section>
   <%-include("partials/footer",{script: script, news:footer_news,
     contact:contact, projects: projects, footer:logo});-%>

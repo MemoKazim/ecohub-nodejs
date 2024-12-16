@@ -1063,6 +1063,7 @@ hr {
 }
 .sub-content ul li i {
   color: #00af46;
+  margin-right: 0.2rem;
 }
 .sub-content img {
   width: 100%;
@@ -1247,8 +1248,14 @@ hr {
 }
 
 #partnership {
-  width: 100%;
-  height: 10rem;
+  margin: 0 10vw;
+  width: 80vw;
+  height: fit-content;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 3rem;
 }
 .slick-slide {
   margin: 0px 20px;
@@ -1853,4 +1860,40 @@ hr {
 .event-description {
   font-weight: 400;
   color: #454545;
+}
+
+/*  */
+
+.partners-box {
+  width: 80vw;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.partner-box {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+}
+
+.partner-logo {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partner-logo > img {
+  width: 10rem;
+  height: auto;
+}
+
+.partner-name {
+  font-size: 1.2rem;
 }

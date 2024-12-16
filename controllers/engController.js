@@ -13,25 +13,38 @@ exports.getIndex = (req, res) => {
   Promise.all([
     HomeAbout.find({}),
     New.find({}).sort({ date: -1 }).limit(3),
-    Project.find({}).sort({ date: -1 }).limit(4),
+    Project.find({}).sort({ date: -1 }),
     Contact.find({}),
     SocialMedia.find({}),
     HomeSlider.find({}),
     About.find({}).limit(2),
-  ]).then(([home_about, news, projects, contacts, logos, sliders, about]) => {
-    res.render("eng/index", {
-      title: "Home Page",
-      script: "index.js",
-      home_about: home_about,
-      projects: projects,
-      footer_news: news,
-      footer_projects: projects,
-      contact: contacts,
-      logo: logos,
-      slider: sliders,
-      about: about,
-    });
-  });
+    Partner.find({}),
+  ]).then(
+    ([
+      home_about,
+      news,
+      projects,
+      contacts,
+      logos,
+      sliders,
+      about,
+      partners,
+    ]) => {
+      res.render("eng/index", {
+        title: "Home Page",
+        script: "index.js",
+        home_about: home_about,
+        projects: projects,
+        footer_news: news,
+        footer_projects: projects,
+        contact: contacts,
+        logo: logos,
+        slider: sliders,
+        about: about,
+        partners: partners,
+      });
+    }
+  );
 };
 exports.getAbout = (req, res) => {
   Promise.all([
@@ -39,7 +52,7 @@ exports.getAbout = (req, res) => {
     Team.find({}),
     Partner.find({}),
     New.find({}).sort({ date: -1 }).limit(3),
-    Project.find({}).sort({ date: -1 }).limit(4),
+    Project.find({}).sort({ date: -1 }).limit(10),
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
@@ -58,10 +71,11 @@ exports.getAbout = (req, res) => {
     });
   });
 };
+/* ORIGINAL ONE
 exports.getProjects = (req, res) => {
   Promise.all([
     New.find({}).sort({ date: -1 }).limit(3),
-    Project.find({}).sort({ date: -1 }).limit(4),
+    Project.find({}).sort({ date: -1 }),
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
@@ -78,10 +92,31 @@ exports.getProjects = (req, res) => {
     });
   });
 };
+*/
+exports.getProjects = (req, res) => {
+  Promise.all([
+    New.find({}).sort({ date: -1 }).limit(3),
+    Project.find({}).sort({ date: -1 }).limit(10),
+    Contact.find({}),
+    SocialMedia.find({}),
+    About.find({}).limit(2),
+  ]).then(([news, projects, contacts, logos, about]) => {
+    res.render("aze/newprojects", {
+      title: "Layihələr",
+      title_nav: "projects",
+      script: "projects.js",
+      about: about,
+      projects: projects,
+      footer_news: news,
+      contact: contacts,
+      logo: logos,
+    });
+  });
+};
 exports.getNews = (req, res) => {
   Promise.all([
     New.find({}).sort({ date: -1 }),
-    Project.find({}).sort({ date: -1 }).limit(4),
+    Project.find({}).sort({ date: -1 }).limit(10),
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
@@ -103,7 +138,7 @@ exports.getNew = (req, res) => {
   Promise.all([
     New.find({ _id: req.params.id }),
     New.find({}).sort({ date: -1 }).limit(3),
-    Project.find({}).sort({ date: -1 }).limit(4),
+    Project.find({}).sort({ date: -1 }).limit(10),
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
@@ -125,7 +160,7 @@ exports.getGalery = (req, res) => {
   Promise.all([
     Galery.find({}),
     New.find({}).sort({ date: -1 }).limit(3),
-    Project.find({}).sort({ date: -1 }).limit(4),
+    Project.find({}).sort({ date: -1 }).limit(10),
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
@@ -143,10 +178,53 @@ exports.getGalery = (req, res) => {
     });
   });
 };
+exports.getPartners = (req, res) => {
+  Promise.all([
+    New.find({}).sort({ date: -1 }).limit(3),
+    Project.find({}).sort({ date: -1 }).limit(10),
+    Contact.find({}),
+    SocialMedia.find({}),
+    About.find({}).limit(2),
+    Partner.find({}),
+  ]).then(([news, projects, contacts, logos, about, partners]) => {
+    res.render("eng/partners", {
+      partners: partners,
+      title: "Partners",
+      title_nav: "partners",
+      script: "",
+      about: about,
+      footer_news: news,
+      footer_projects: projects.slice(0, 4),
+      projects: projects,
+      contact: contacts,
+      logo: logos,
+    });
+  });
+};
+exports.getCOP = (req, res) => {
+  Promise.all([
+    New.find({}).sort({ date: -1 }).limit(3),
+    Project.find({}).sort({ date: -1 }).limit(10),
+    Contact.find({}),
+    SocialMedia.find({}),
+    About.find({}).limit(2),
+  ]).then(([news, projects, contacts, logos, about]) => {
+    res.render("eng/cop29", {
+      title: "COP29",
+      title_nav: "COP29",
+      script: "",
+      about: about,
+      footer_news: news,
+      projects: projects,
+      contact: contacts,
+      logo: logos,
+    });
+  });
+};
 exports.getEcoart = (req, res) => {
   Promise.all([
     New.find({}).sort({ date: -1 }).limit(3),
-    Project.find({}).sort({ date: -1 }).limit(4),
+    Project.find({}).sort({ date: -1 }).limit(10),
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
@@ -166,7 +244,7 @@ exports.getEcoart = (req, res) => {
 exports.getContact = (req, res) => {
   Promise.all([
     New.find({}).sort({ date: -1 }).limit(3),
-    Project.find({}).sort({ date: -1 }).limit(4),
+    Project.find({}).sort({ date: -1 }).limit(10),
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),

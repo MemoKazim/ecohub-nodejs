@@ -1,0 +1,47 @@
+<%-include("partials/header" , {title: title});-%>
+<body>
+  <%-include("partials/navbar", {projects: projects});-%>
+  <%-include("partials/navigation" , {title: title, title_nav:title_nav });-%>
+
+  <section id="sub-projects">
+    <div class="sub-projects-container">
+      <div class="sub-projects-content">
+        <%projects.forEach(project =>{%>
+        <div id="<%=project._id%>" class="sub-title">
+          <h3><%-project.title.az-%></h3>
+        </div>
+        <div class="sub-content">
+          <p><%-project.description.az-%></p>
+          <div class="slider-of-projects-container">
+            <div class="slider-of-projects">
+              <ul class="slideWrap-of-projects">
+                <%project.images.forEach((img)=>{ %>
+                <li>
+                  <div
+                    class="projects-image"
+                    style="background-image: url(/uploads/<%=img%>)"
+                  ></div>
+                </li>
+                <%});%>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <%});%>
+      </div>
+      <div class="side-navbar">
+        <p>Layihələrimiz</p>
+        <ul>
+          <%projects.forEach(project =>{ %>
+          <li>
+            <a href="#<%=project._id%>"> <%-project.title.az-%> </a>
+          </li>
+          <%});%>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <%-include("partials/footer",{script: script, news:footer_news,
+  contact:contact, projects: projects, footer:logo});-%>
+</body>

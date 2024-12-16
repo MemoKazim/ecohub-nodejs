@@ -33,6 +33,8 @@ exports.getLogin = (req, res, next) => {
 
 exports.postLogin = async (req, res, next) => {
   const { email, password } = req.body;
+  let result = null;
+  let user = null;
   const cookieOptions = {
     expires: new Date(Date.now() + 60 * 60 * 1000),
     httpOnly: true,
@@ -42,8 +44,14 @@ exports.postLogin = async (req, res, next) => {
       .status(400)
       .render("admin/login", { message: "Incorrect username or password" });
   }
-  const user = await User.find({ email: email }).select("+password");
-  const result = await user[0].correctPassword(user[0].password, password);
+  try {
+    user = await User.find({ email: email }).select("+password");
+    result = await user[0].correctPassword(user[0].password, password);
+  } catch {
+    return res
+      .status(401)
+      .render("admin/login", { message: "Incorrect username or password" });
+  }
   if (!result || !user) {
     return res
       .status(401)

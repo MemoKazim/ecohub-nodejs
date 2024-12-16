@@ -24,8 +24,12 @@ function showSlides(n) {
 
 //ABOUT-US VIDEO
 var video = document.getElementsByClassName("about-vid")[0];
-function Fullscreen() {
-  video.requestFullscreen();
+function start_stop() {
+  if (video.paused) {
+    video.play();
+  } else {
+    video.pause();
+  }
 }
 
 //TINY SLIDER
@@ -37,3 +41,29 @@ function next() {
 function prev() {
   sliderMain.prepend(item[item.length - 1]);
 }
+
+$(document).ready(function () {
+  $(".customer-logos").slick({
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    arrows: false,
+    dots: false,
+    pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 520,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
+  });
+});

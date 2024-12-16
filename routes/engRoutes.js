@@ -14,13 +14,16 @@ route.get("/", (req, res) => {
   res.redirect("/eng/index");
 });
 
-route.get("/index", engController.getIndex);
-route.get("/about", engController.getAbout);
-route.get("/projects", engController.getProjects);
-route.get("/news", engController.getNews);
-route.get("/news/:id", engController.getNew);
-route.get("/galery", engController.getGalery);
-route.get("/ecoart", engController.getEcoart);
-route.get("/contact", engController.getContact);
+route
+  .get("/index", engController.getIndex)
+  .get("/about", engController.getAbout)
+  .get("/projects", engController.getProjects)
+  .get("/partners", engController.getPartners)
+  .get("/cop29", engController.getCOP)
+  .get("/news", engController.getNews)
+  .get("/news/:id", engController.getNew)
+  .get("/galery", engController.getGalery)
+  .get("/ecoart", engController.getEcoart)
+  .get("/contact", engController.getContact);
 
 module.exports = route;

@@ -40,9 +40,8 @@
 
     <section id="about-us">
       <video
-        onclick="Fullscreen()"
+        onclick="start_stop()"
         class="about-vid"
-        controls
         poster="/images/ecosample.png"
       >
         <source src="/images/home.mp4" type="video/mp4" />
@@ -144,6 +143,22 @@
             <%});%>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="partnership">
+      <div class="sub-title">
+        <h2>Tərəfdaşlar</h2>
+      </div>
+      <div class="container">
+        <section class="customer-logos slider">
+          <%partners.forEach((partner)=>{%>
+          <div
+            class="slide"
+            style="background-image: url(/uploads/<%=partner.image%>)"
+          ></div>
+          <%});%>
+        </section>
       </div>
     </section>
 

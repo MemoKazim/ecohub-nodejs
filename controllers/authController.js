@@ -14,17 +14,21 @@ exports.postSignup = (req, res, next) => {
     email: req.body.email,
     isAdmin: true,
   });
-  newUser.save();
-  const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES,
-  });
-  res.status(201).json({
-    status: "success",
-    token,
-    data: {
-      user: newUser,
-    },
-  });
+  try {
+    newUser.save();
+    jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRES,
+    });
+    res.render("admin/login", {
+      message: "User Succcesfully created!",
+      message_status: "good",
+    });
+  } catch {
+    res.render("admin/login", {
+      message: "There was some error while creating user. Try different email!",
+      message_status: "bad",
+    });
+  }
 };
 
 exports.getLogin = (req, res, next) => {

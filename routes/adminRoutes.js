@@ -4,7 +4,7 @@ const adminController = require("../controllers/adminController");
 const authController = require("../controllers/authController");
 
 router.route("/").get(authController.getLogin).post(authController.postLogin);
-router.route("/?*").all(authController.isAuthenticated);
+// router.route("/?*").all(authController.isAuthenticated);
 
 //=============================|ABOUT|=================================//
 router

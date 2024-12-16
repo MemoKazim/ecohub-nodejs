@@ -101,8 +101,8 @@ exports.getProjects = (req, res) => {
     SocialMedia.find({}),
     About.find({}).limit(2),
   ]).then(([news, projects, contacts, logos, about]) => {
-    res.render("aze/newprojects", {
-      title: "Layihələr",
+    res.render("eng/newprojects", {
+      title: "Projects",
       title_nav: "projects",
       script: "projects.js",
       about: about,

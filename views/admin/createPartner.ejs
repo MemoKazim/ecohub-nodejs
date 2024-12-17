@@ -12,6 +12,14 @@
         </td>
       </tr>
       <tr>
+        <td>
+          <label for="">Web URL: </label>
+        </td>
+        <td>
+          <input type="text" class="text-fields" name="url" placeholder="URL">
+        </td>
+      </tr>
+      <tr>
         <td>Image: </td>
         <td><input accept="image/*" type="file" name="image" id="imgInp"></td>
       </tr>
@@ -23,15 +31,6 @@
       </tr>
     </table>
   </form>
-  <script>
-    const imgInp = document.querySelector("#imgInp")
-    const newImage = document.querySelector("#newImage")
-    imgInp.onchange = evt => {
-        const [file] = imgInp.files
-        if (file) {
-          newImage.src = URL.createObjectURL(file)
-        }
-    }
-  </script>
+  <%-include("partials/imageview")-%>
 </body>
 </html>

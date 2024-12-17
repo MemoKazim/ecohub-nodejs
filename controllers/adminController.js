@@ -656,6 +656,7 @@ exports.createGetPartner = async (req, res) => {
 exports.createPartner = async (req, res) => {
   const newPartner = await new Partner({
     name: req.body.name,
+    url: req.body.url,
     image: req.file.filename,
   });
   await newPartner
@@ -710,6 +711,7 @@ exports.updatePartner = async (req, res) => {
   let update = {};
   let bluePrint = {
     name: req.body.name,
+    url: req.body.url,
   };
   for (const key of Object.keys(bluePrint)) {
     if (bluePrint[key] !== "") {

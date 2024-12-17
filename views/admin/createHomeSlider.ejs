@@ -52,15 +52,6 @@
       </tr>
     </table>
   </form>
-  <script>
-    const imgInp = document.querySelector("#imgInp")
-    const newImage = document.querySelector("#newImage")
-    imgInp.onchange = evt => {
-        const [file] = imgInp.files
-        if (file) {
-          newImage.src = URL.createObjectURL(file)
-        }
-    }
-  </script>
+  <%-include("partials/imageview")-%>
 </body>
 </html>

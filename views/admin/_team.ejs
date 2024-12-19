@@ -16,10 +16,9 @@
                 </tr>
             </thead>
             <tbody>
-                <% let counter = 1;
-                result.forEach((data)=>{%>
+                <% result.forEach((data)=>{ %>
                     <tr>
-                        <td><%-counter-%></td>
+                        <td><%-data.sequence-%></td>
                         <td><%-data.name.az-%></td>
                         <td><%-data.surname.az-%></td>
                         <td><%-data.job.az-%></td>
@@ -51,7 +50,7 @@
                             </table>
                         </td>
                     </tr>
-                <%counter+=1})%>
+                <% }) %>
             </tbody>
         </table>
     </div>

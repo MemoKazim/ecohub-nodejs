@@ -49,21 +49,19 @@ exports.getIndex = (req, res) => {
 exports.getAbout = (req, res) => {
   Promise.all([
     About.find({}),
-    Team.find({}),
-    Partner.find({}),
+    Team.find({}).sort({ sequence: 1 }),
     New.find({}).sort({ date: -1 }).limit(3),
     Project.find({}).sort({ date: -1 }).limit(10),
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
-  ]).then(([about, teams, partners, news, projects, contacts, logos]) => {
+  ]).then(([about, teams, news, projects, contacts, logos]) => {
     res.render("eng/about", {
       title: "About",
       title_nav: "about",
       script: "about.js",
       about: about,
       employees: teams,
-      partners: partners,
       footer_news: news,
       projects: projects,
       contact: contacts,
@@ -185,7 +183,7 @@ exports.getPartners = (req, res) => {
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
-    Partner.find({}),
+    Partner.find({}).sort({ sequence: 1 }),
   ]).then(([news, projects, contacts, logos, about, partners]) => {
     res.render("eng/partners", {
       partners: partners,

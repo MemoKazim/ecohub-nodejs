@@ -12,6 +12,10 @@ const partnerSchema = new mongoose.Schema({
   url: {
     type: String,
   },
+  sequence: {
+    type: Number,
+    required: [true, "Partner must sequence number"],
+  },
 });
 
 const Partner = new mongoose.model("Partner", partnerSchema);

@@ -41,6 +41,10 @@ const teamSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  sequence: {
+    type: Number,
+    required: [true, "Please provide team sequence number"],
+  },
   imageCover: String,
 });
 

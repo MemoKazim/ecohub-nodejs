@@ -49,30 +49,26 @@ exports.getIndex = (req, res) => {
 exports.getAbout = (req, res) => {
   Promise.all([
     About.find({}),
-    Team.find({}),
-    Partner.find({}),
+    Team.find({}).sort({ sequence: 1 }),
     New.find({}).sort({ date: -1 }).limit(3),
     Project.find({}).sort({ date: -1 }).limit(10),
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
-  ]).then(
-    ([about, teams, partners, news, projects, contacts, logos, lim_about]) => {
-      res.render("aze/about", {
-        title: "Haqqımızda",
-        title_nav: "about",
-        script: "about.js",
-        about: about,
-        lim_about: lim_about,
-        employees: teams,
-        partners: partners,
-        footer_news: news,
-        projects: projects,
-        contact: contacts,
-        logo: logos,
-      });
-    }
-  );
+  ]).then(([about, teams, news, projects, contacts, logos, lim_about]) => {
+    res.render("aze/about", {
+      title: "Haqqımızda",
+      title_nav: "about",
+      script: "about.js",
+      about: about,
+      lim_about: lim_about,
+      employees: teams,
+      footer_news: news,
+      projects: projects,
+      contact: contacts,
+      logo: logos,
+    });
+  });
 };
 /* ORIGINAL ONE
 exports.getProjects = (req, res) => {
@@ -188,7 +184,7 @@ exports.getPartners = (req, res) => {
     Contact.find({}),
     SocialMedia.find({}),
     About.find({}).limit(2),
-    Partner.find({}),
+    Partner.find({}).sort({ sequence: 1 }),
   ]).then(([news, projects, contacts, logos, about, partners]) => {
     res.render("aze/partners", {
       partners: partners,

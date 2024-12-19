@@ -10,6 +10,7 @@ const Team = require("./../models/teamModel");
 const User = require("./../models/userModel");
 const New = require("./../models/newModel");
 
+const fs = require("fs");
 const sharp = require("sharp");
 const multer = require("multer");
 const uniqid = require("uniqid");
@@ -640,23 +641,28 @@ exports.deleteNew = async (req, res) => {
 
 //=============================|PARTNER|=================================//
 exports.readAllPartner = async (req, res) => {
-  const allPartner = await Partner.find({}).catch((err) => {
-    throw err;
-  });
+  const allPartner = await Partner.find({})
+    .sort({ sequence: 1 })
+    .catch((err) => {
+      throw err;
+    });
   res
     .status(200)
     .render("admin/_partner", { result: allPartner, title: "Partner" });
 };
 exports.createGetPartner = async (req, res) => {
+  const count = (await Partner.count()) + 1;
   await res.status(200).render("admin/createPartner", {
     nav: "partners",
     title: "Create Partner",
+    count: count,
   });
 };
 exports.createPartner = async (req, res) => {
   const newPartner = await new Partner({
     name: req.body.name,
     url: req.body.url,
+    sequence: req.body.seq,
     image: req.file.filename,
   });
   await newPartner
@@ -712,6 +718,7 @@ exports.updatePartner = async (req, res) => {
   let bluePrint = {
     name: req.body.name,
     url: req.body.url,
+    sequence: req.body.seq,
   };
   for (const key of Object.keys(bluePrint)) {
     if (bluePrint[key] !== "") {
@@ -937,9 +944,11 @@ exports.readAllTeam = async (req, res) => {
   res.status(200).render("admin/_team", { result: allTeam, title: "Team" });
 };
 exports.createGetTeam = async (req, res) => {
+  const count = (await Team.count()) + 1;
   await res.status(200).render("admin/createTeam", {
     nav: "teams",
     title: "Create Team",
+    count: count,
   });
 };
 exports.createTeam = async (req, res) => {
@@ -958,6 +967,7 @@ exports.createTeam = async (req, res) => {
         en: req.body.jobEn,
       },
       mail: req.body.mail,
+      sequence: req.body.seq,
       imageCover: undefined,
     });
     await newTeam
@@ -983,6 +993,7 @@ exports.createTeam = async (req, res) => {
         en: req.body.jobEn,
       },
       mail: req.body.mail,
+      sequence: req.body.seq,
       imageCover: req.file.filename,
     });
     await newTeam
@@ -1050,6 +1061,7 @@ exports.updateTeam = async (req, res) => {
       en: req.body.jobEn,
     },
     mail: req.body.mail,
+    sequence: req.body.seq,
   };
   for (const key of Object.keys(bluePrint)) {
     if (bluePrint[key] !== "") {

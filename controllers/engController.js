@@ -111,9 +111,13 @@ exports.getProjects = (req, res) => {
     });
   });
 };
-exports.getNews = (req, res) => {
+exports.getNews = async (req, res) => {
+  const page = req.query.page || 1;
+  const limit = req.query.limit || 6;
+  const offset = (page - 1) * limit;
+  const total = await New.count();
   Promise.all([
-    New.find({}).sort({ date: -1 }),
+    New.find({}).sort({ date: -1 }).skip(offset).limit(limit),
     Project.find({}).sort({ date: -1 }).limit(10),
     Contact.find({}),
     SocialMedia.find({}),
@@ -129,10 +133,12 @@ exports.getNews = (req, res) => {
       projects: projects,
       contact: contacts,
       logo: logos,
+      total: Math.floor(total / limit) + 1,
+      page: page,
     });
   });
 };
-exports.getNew = (req, res) => {
+exports.getNew = async (req, res) => {
   Promise.all([
     New.find({ _id: req.params.id }),
     New.find({}).sort({ date: -1 }).limit(3),

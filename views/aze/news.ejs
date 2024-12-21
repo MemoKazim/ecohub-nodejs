@@ -6,30 +6,10 @@
   <section id="sub-news">
     <div class="section-news-container">
       <%news.forEach((data) =>{ %>
-      <div class="news-item">
-        <div class="news-item-container">
-          <div
-            class="news-item-img"
-            style="background-image: url('/uploads/<%=data.imageCover%>')"
-          ></div>
-          <div class="news-item-content">
-            <div class="news-title">
-              <a href="/aze/news/<%=data._id%>"> <%-data.title.az-%> </a>
-            </div>
-            <div class="news-date">
-              <i class="fa-solid fa-calendar-days"></i>
-              <p><%-data.date.getDate()-%>.<%-data.date.getMonth()+1-%>.<%-data.date.getFullYear()-%></p>
-            </div>
-            <div class="news-read-more">
-              <button>
-                <a href="/aze/news/<%=data._id%>">ƏTRALI OXU</a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+        <%-include("partials/single_new",{data:data});-%>
       <%});%>
     </div>
+    <%-include("partials/pager", {total:total})-%>
   </section>
 
   <%-include("partials/footer",{script: script, news:footer_news,

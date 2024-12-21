@@ -28,9 +28,10 @@ const multerFilter = (req, file, cb) => {
     cb(null, true);
   } else {
     cb(
-      res
-        .status(400)
-        .redirect(req.path, { message: "Only image and video allowed!" }),
+      // res
+      //   .status(400)
+      //   .redirect(req.path, { message: "Only image and video allowed!" }),
+      null,
       false
     );
   }

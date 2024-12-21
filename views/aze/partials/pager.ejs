@@ -1,0 +1,32 @@
+<div class="pager">
+  <% if (page != 1) { %>
+    <a href="?page=<%=Number(page)-1%>#sub-news" class="page arrow"><i class="fa-solid fa-angle-left"></i></a>
+  <% } else { %>
+    <a class="page disabled" style="visibility:hidden;"><i class="fa-solid fa-angle-left"></i></a>
+  <% } %>
+
+  <% let renderedFirstEllipsis = false;
+     let renderedLastEllipsis = false;
+     page = Number(page);
+  %>
+
+  <% for (let i = 1; i <= total; i++) {
+       if (i == page) { %>
+         <a href="?page=<%=i%>#sub-news" class="page current-page"><%-i-%></a>
+       <% } else if (i <= 1 || i > total - 1 || (i >= page - 2 && i <= page + 2)) { %>
+         <a href="?page=<%=i%>#sub-news" class="page"><%-i-%></a>
+       <% } else if (i < page - 2 && !renderedFirstEllipsis) {
+         renderedFirstEllipsis = true; %>
+         <a class="page">...</a>
+       <% } else if (i > page + 2 && !renderedLastEllipsis) {
+         renderedLastEllipsis = true; %>
+         <a class="page">...</a>
+       <% } %>
+  <% } %>
+
+  <% if (page != total) { %>
+    <a href="?page=<%=Number(page)+1%>#sub-news" class="page arrow"><i class="fa-solid fa-angle-right"></i></a>
+  <% } else { %>
+    <a class="page disabled" style="visibility:hidden;"><i class="fa-solid fa-angle-right"></i></a>
+  <% } %>
+</div>

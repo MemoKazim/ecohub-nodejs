@@ -1449,7 +1449,8 @@ hr {
 #sub-news {
   position: relative;
   width: 80vw;
-  height: fit-content;
+  height: 100%;
+  gap: 2rem;
   margin: 3rem 0 3rem 10vw;
 }
 .section-news-container {
@@ -1905,7 +1906,8 @@ hr {
 .pager {
   display: flex;
   justify-content: center;
-  height: 2rem;
+  margin-top: 2rem;
+  height: 3rem;
   gap: 1.2rem;
 }
 
